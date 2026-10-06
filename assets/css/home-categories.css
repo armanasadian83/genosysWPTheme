@@ -1,0 +1,489 @@
+/* Homepage category showcase; all styling is isolated from the existing sections. */
+.genosys-categories {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(78px, 5vw, 100px) 0 84px;
+    background: #f6f5f3;
+    color: #1c1d22;
+    direction: rtl;
+}
+
+.genosys-categories__intro {
+    position: relative;
+    z-index: 2;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    text-align: center;
+}
+
+.genosys-categories__intro h2 {
+    margin: 0;
+    color: #1c1d22;
+    font-size: clamp(38px, 3.4vw, 64px);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.genosys-categories__intro h2 span {
+    color: #c60932;
+}
+
+.genosys-categories__intro p {
+    margin: 24px 0 0;
+    color: #85817e;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.genosys-categories__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 256px;
+    min-height: 62px;
+    margin-top: 29px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #d00937, #a8062d);
+    box-shadow: 0 11px 18px rgba(189, 9, 49, .2);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.genosys-categories__button:hover {
+    color: #fff;
+}
+
+.genosys-categories__brand {
+    display: block;
+    width: fit-content;
+    margin: 19px auto 0;
+    border-bottom: 1px solid currentColor;
+    color: #393737;
+    font-size: 14px;
+    line-height: 1.7;
+    text-decoration: none;
+}
+
+.genosys-categories__stage {
+    position: relative;
+    margin-top: 54px;
+}
+
+.genosys-categories__stage::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 162px;
+    bottom: -84px;
+    z-index: 0;
+    background: linear-gradient(180deg, #a60929, #c60d35);
+}
+
+.genosys-categories__row.latest-products__row {
+    --category-card-width: clamp(300px, 23.5vw, 450px);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    width: 100%;
+    height: 500px;
+    gap: 32px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0 clamp(20px, 6vw, 114px);
+    box-sizing: border-box;
+    scroll-padding-inline: clamp(20px, 6vw, 114px);
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: default;
+}
+
+.genosys-categories__row::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.genosys-categories__row.is-dragging {
+    user-select: none;
+}
+
+.genosys-categories__row.is-dragging,
+.genosys-categories__row.is-settling {
+    scroll-snap-type: none;
+}
+
+.genosys-categories__row.latest-products__row.is-auto-scrolling {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    overflow-anchor: none;
+}
+
+.genosys-categories__card {
+    position: relative;
+    display: block;
+    flex: 0 0 var(--category-card-width);
+    width: var(--category-card-width);
+    height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #dddee4;
+    color: #17191e;
+    text-decoration: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.genosys-categories__card--short {
+    height: 455px;
+}
+
+.genosys-categories__card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    user-select: none;
+    transition: transform .8s cubic-bezier(.22, .61, .36, 1);
+}
+
+.genosys-categories__card-title {
+    position: absolute;
+    top: 26px;
+    inset-inline-start: 28px;
+    display: block;
+    max-width: calc(100% - 56px);
+    color: #17191e;
+    font-size: clamp(19px, 1.35vw, 25px);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: right;
+    transition: color .7s ease;
+}
+
+.genosys-categories__card-title::after {
+    content: '';
+    display: block;
+    width: 42px;
+    height: 3px;
+    margin-top: 14px;
+    background: #ce0b36;
+    transition: width .8s cubic-bezier(.22, .61, .36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .genosys-categories__card:hover img {
+        transform: scale(1.05);
+    }
+
+    .genosys-categories__card:hover .genosys-categories__card-title {
+        color: #ce0b36;
+    }
+
+    .genosys-categories__card:hover .genosys-categories__card-title::after {
+        width: 66px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genosys-categories__card img,
+    .genosys-categories__card-title,
+    .genosys-categories__card-title::after {
+        transition-duration: .01ms;
+    }
+}
+
+.genosys-categories__row:focus-visible,
+.genosys-categories__card:focus-visible,
+.genosys-categories__button:focus-visible,
+.genosys-categories__brand:focus-visible {
+    outline: 3px solid #df1547;
+    outline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+    .genosys-categories {
+        padding-top: 70px;
+        padding-bottom: 58px;
+    }
+
+    .genosys-categories__intro h2 {
+        font-size: clamp(32px, 7vw, 48px);
+    }
+
+    .genosys-categories__intro p {
+        margin-top: 17px;
+        font-size: 14px;
+    }
+
+    .genosys-categories__button {
+        min-width: 220px;
+        min-height: 54px;
+        margin-top: 24px;
+        font-size: 14px;
+    }
+
+    .genosys-categories__stage {
+        margin-top: 42px;
+    }
+
+    .genosys-categories__stage::before {
+        top: 126px;
+        bottom: -58px;
+    }
+
+    .genosys-categories__row.latest-products__row {
+        --category-card-width: min(82vw, 360px);
+        height: 410px;
+        gap: 16px;
+        padding-inline: 20px;
+        scroll-padding-inline: 20px;
+    }
+
+    .genosys-categories__card {
+        height: 410px;
+    }
+
+    .genosys-categories__card--short {
+        height: 375px;
+    }
+
+    .genosys-categories__card-title {
+        top: 20px;
+        inset-inline-start: 20px;
+        max-width: calc(100% - 40px);
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 480px) {
+    .genosys-categories__row.latest-products__row,
+    .genosys-categories__card {
+        height: 360px;
+    }
+
+    .genosys-categories__card--short {
+        height: 330px;
+    }
+}
+
+/* Four animated statistics continue the crimson band below the category row. */
+.genosys-category-stats {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    width: calc(100% - 96px);
+    max-width: 1280px;
+    margin: 82px auto 0;
+    direction: rtl;
+}
+
+.genosys-category-stats__item {
+    position: relative;
+    display: block;
+    min-width: 0;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, .58);
+    border-radius: 50%;
+    background: radial-gradient(circle at 28% 10%, rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 55%, rgba(255, 255, 255, .05) 100%), linear-gradient(145deg, #d95b76, #c72248);
+    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, .09), 0 18px 28px rgba(92, 0, 27, .14);
+    color: #fff;
+    text-align: center;
+    transition: box-shadow .45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .genosys-category-stats__item:hover {
+        box-shadow: inset 0 0 0 10px rgba(255, 255, 255, .12), 0 20px 36px rgba(69, 0, 24, .34), 0 0 0 7px rgba(255, 255, 255, .12);
+    }
+
+    .genosys-category-stats__item:hover .genosys-category-stats__progress {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, .85));
+    }
+}
+
+.genosys-category-stats__item::before {
+    content: '';
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, transparent 0 43px, rgba(255, 255, 255, .075) 44px 45px, transparent 46px 55px);
+    pointer-events: none;
+}
+
+.genosys-category-stats__ring {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.genosys-category-stats__track,
+.genosys-category-stats__progress {
+    fill: none;
+    stroke-width: 4;
+}
+
+.genosys-category-stats__track {
+    stroke: rgba(255, 255, 255, .24);
+}
+
+.genosys-category-stats__progress {
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 2.1s cubic-bezier(.2, .72, .2, 1);
+}
+
+.genosys-stats-js .genosys-category-stats__progress {
+    stroke-dashoffset: 100;
+    transition: none;
+}
+
+.genosys-stats-js .genosys-category-stats__item.is-visible .genosys-category-stats__progress {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 2.1s cubic-bezier(.2, .72, .2, 1);
+}
+
+.genosys-stats-js .genosys-category-stats__value {
+    visibility: hidden;
+}
+
+.genosys-stats-js .genosys-category-stats.is-ready .genosys-category-stats__value {
+    visibility: visible;
+}
+
+.genosys-category-stats__content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20.5%;
+}
+
+.genosys-category-stats__icon {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 12px rgba(114, 7, 37, .14);
+    color: #ce0b36;
+}
+
+.genosys-category-stats__icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.genosys-category-stats__value {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    margin-top: 8px;
+    direction: ltr;
+    color: #fff;
+    font-size: clamp(38px, 3.6vw, 60px);
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.genosys-category-stats__plus {
+    font-size: .48em;
+    font-weight: 700;
+}
+
+.genosys-category-stats__label {
+    margin-top: 8px;
+    color: #fff;
+    font-size: clamp(15px, 1.1vw, 20px);
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+    .genosys-category-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        max-width: 650px;
+    }
+}
+
+@media (max-width: 560px) {
+    .genosys-category-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        width: calc(100% - 44px);
+        max-width: 420px;
+        margin-top: 58px;
+    }
+
+    .genosys-category-stats__content {
+        padding-top: 15%;
+    }
+
+    .genosys-category-stats__icon {
+        width: clamp(34px, 10vw, 44px);
+        height: clamp(34px, 10vw, 44px);
+        flex-basis: clamp(34px, 10vw, 44px);
+    }
+
+    .genosys-category-stats__icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .genosys-category-stats__value {
+        margin-top: 4px;
+        font-size: clamp(25px, 7.5vw, 36px);
+        line-height: 1.15;
+    }
+
+    .genosys-category-stats__label {
+        margin-top: 4px;
+        font-size: clamp(10px, 2.7vw, 13px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genosys-category-stats__item {
+        transition-duration: .01ms;
+    }
+
+    .genosys-stats-js .genosys-category-stats__item.is-visible .genosys-category-stats__progress {
+        transition-duration: .01ms;
+    }
+}

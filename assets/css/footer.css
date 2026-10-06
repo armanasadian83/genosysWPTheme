@@ -1,0 +1,287 @@
+.genosys-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #f7f5f3;
+    color: #202127;
+    direction: rtl;
+}
+
+.genosys-footer__hero {
+    position: relative;
+    height: 500px;
+}
+
+.genosys-footer__art {
+    --footer-art-width: max(100vw, 1100px);
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 55%;
+    height: min(100%, calc(var(--footer-art-width) * .27));
+    overflow: hidden;
+    background: url("../images/footer-reference-art-1.5.13.png") left top / var(--footer-art-width) auto no-repeat;
+    -webkit-mask-image: linear-gradient(to right, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 86%, transparent 100%);
+    pointer-events: none;
+}
+
+.genosys-footer__art::after {
+    content: "";
+    position: absolute;
+    inset: auto auto 0 0;
+    width: 65%;
+    height: 17px;
+    background: linear-gradient(to bottom, transparent, #f7f5f3 80%);
+}
+
+.genosys-footer__hero-inner,
+.genosys-footer__columns,
+.genosys-footer__bottom {
+    width: calc(100% - 2 * clamp(28px, 7vw, 120px));
+    max-width: 1464px;
+    margin-inline: auto;
+}
+
+.genosys-footer__hero-inner {
+    position: relative;
+    z-index: 2;
+    padding-top: 56px;
+}
+
+.genosys-footer__invitation {
+    width: fit-content;
+    max-width: 54%;
+    text-align: right;
+}
+
+.genosys-footer__headline {
+    margin: 0;
+    font-size: clamp(34px, 3.4vw, 56px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.55;
+}
+
+.genosys-footer__headline span {
+    display: block;
+    white-space: nowrap;
+}
+
+.genosys-footer__headline em {
+    color: #c90e36;
+    font-style: normal;
+}
+
+.genosys-footer__outline-button,
+.genosys-footer__filled-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.genosys-footer__outline-button {
+    min-width: 250px;
+    min-height: 65px;
+    margin-top: 38px;
+    padding: 14px 26px;
+    border: 2px solid #c90e36;
+    background: transparent;
+    color: #202127;
+    opacity: 1;
+    cursor: default;
+}
+
+.genosys-footer__outline-button:not(:disabled):hover {
+    background: #c90e36;
+    color: #fff;
+}
+
+.genosys-footer__wave {
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 -112px;
+    width: 100%;
+    height: 202px;
+    pointer-events: none;
+}
+
+.genosys-footer__lower {
+    position: relative;
+    z-index: 2;
+    padding-top: 90px;
+}
+
+.genosys-footer__columns {
+    display: grid;
+    grid-template-columns: 43% 30% 27%;
+    min-height: 230px;
+}
+
+.genosys-footer__brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-inline-end: 1px solid #d5284a;
+    text-align: center;
+}
+
+.genosys-footer__brand-content {
+    width: min(100%, 440px);
+    transform: translateX(65px);
+}
+
+.genosys-footer__logo {
+    display: inline-block;
+    line-height: 0;
+}
+
+.genosys-footer__logo img {
+    display: block;
+    width: 190px;
+    height: auto;
+}
+
+.genosys-footer__brand p {
+    max-width: 410px;
+    margin: 5px auto 26px;
+    color: #747982;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.genosys-footer__filled-button {
+    min-width: 186px;
+    min-height: 57px;
+    padding: 12px 25px;
+    border: 1px solid #c90e36;
+    border-radius: 2px;
+    background: #c90e36;
+    color: #fff;
+}
+
+.genosys-footer__filled-button:hover {
+    background: #a9092a;
+    border-color: #a9092a;
+}
+
+.genosys-footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-inline-end: 1px solid #d5284a;
+    padding-block: 0 2px;
+    text-align: center;
+}
+
+.genosys-footer__links a {
+    color: #202127;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+    transform: translateX(55px);
+    transition: color 180ms ease;
+}
+
+.genosys-footer__links a:hover {
+    color: #c90e36;
+}
+
+.genosys-footer__social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-inline-start: 83px;
+}
+
+.genosys-footer__social-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #a8abb0;
+    color: #202127;
+}
+
+.genosys-footer__social-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.genosys-footer__social-icon--linkedin span {
+    font: 700 19px/1 Arial, sans-serif;
+    letter-spacing: -.08em;
+}
+
+.genosys-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 30px;
+    border-top: 1px solid #c5c4c3;
+    padding-block: 18px 27px;
+    color: #7a7e87;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+    .genosys-footer__hero { height: 460px; }
+    .genosys-footer__hero-inner { padding-top: 62px; }
+    .genosys-footer__headline { font-size: clamp(31px, 3.8vw, 42px); }
+    .genosys-footer__columns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px 0; min-height: 0; }
+    .genosys-footer__brand-content { transform: none; padding-inline: 20px; }
+    .genosys-footer__links { border-inline-end: 0; gap: 16px; }
+    .genosys-footer__links a { transform: none; }
+    .genosys-footer__social { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: center; border-top: 1px solid #e3c5cc; padding: 26px 0 0; }
+}
+
+@media (max-width: 900px) {
+    .genosys-footer__hero { height: 570px; }
+    .genosys-footer__hero-inner { padding-top: 40px; }
+    .genosys-footer__invitation { max-width: 100%; }
+    .genosys-footer__headline { font-size: clamp(26px, 4.5vw, 40px); line-height: 1.5; }
+    .genosys-footer__outline-button { min-width: 200px; min-height: 54px; margin-top: 22px; padding: 11px 22px; font-size: 15px; }
+    .genosys-footer__art {
+        top: 250px;
+        width: min(100%, 540px);
+        height: 260px;
+        --footer-art-width: 950px;
+        background-size: 950px auto;
+        background-position: left top;
+    }
+    .genosys-footer__art::after { height: 22px; }
+    .genosys-footer__wave { bottom: -74px; height: 160px; }
+    .genosys-footer__lower { padding-top: 88px; }
+    .genosys-footer__columns { display: flex; flex-direction: column; gap: 33px; }
+    .genosys-footer__brand { border: 0; }
+    .genosys-footer__brand-content { padding-inline: 0; }
+    .genosys-footer__brand p { margin-bottom: 22px; }
+    .genosys-footer__brand p br { display: none; }
+    .genosys-footer__links {
+        border-inline: 0;
+        border-block: 1px solid #e3c5cc;
+        gap: 18px;
+        padding-block: 24px;
+    }
+    .genosys-footer__links a { transform: none; }
+    .genosys-footer__social { flex-direction: row; align-items: center; justify-content: center; gap: 12px; border-top: 0; padding: 0; }
+    .genosys-footer__bottom { flex-direction: column; align-items: center; gap: 6px; margin-top: 31px; text-align: center; font-size: 13px; }
+}
+
+@media (max-width: 420px) {
+    .genosys-footer__hero { height: 540px; }
+    .genosys-footer__art { top: 240px; height: 250px; background-size: 880px auto; }
+    .genosys-footer__art::after { height: 30px; }
+    .genosys-footer__headline { font-size: 26px; letter-spacing: -.035em; }
+    .genosys-footer__outline-button { min-width: 188px; }
+    .genosys-footer__lower { padding-top: 82px; }
+}

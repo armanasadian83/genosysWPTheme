@@ -1,0 +1,135 @@
+/* Dedicated customer-club page; existing site and product styles are untouched. */
+body.genosys-fans-club { background: #f4f3f1; }
+body.genosys-fans-club .site-header { display: none; }
+.fans-club-page { min-height: 100vh; direction: rtl; color: #191a20; }
+.fans-club-hero { height: 493px; padding: 64px 24px 0; background: #f4f3f1; text-align: center; }
+.fans-club-hero__content { max-width: 1100px; margin: 0 auto; }
+.fans-club-hero__eyebrow { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 6px 21px; border: 1px solid #edb9c5; border-radius: 999px; background: #f6e8eb; color: #c40932; font-size: 14px; line-height: 1.5; }
+.fans-club-hero h1 { margin: 24px 0 0; color: #191a20; font-size: clamp(42px, 4.3vw, 68px); font-weight: 800; line-height: 1.35; }
+.fans-club-hero h1 span { color: #c70932; }
+.fans-club-hero p { margin: 22px auto 0; color: #85817d; font-size: 18px; line-height: 2.05; }
+.fans-club-band { min-height: 720px; padding: 0 24px 112px; background: linear-gradient(180deg, #9f0b24 0%, #b20d29 48%, #c40f2d 100%); }
+.fans-club-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 34px; width: 100%; max-width: 1415px; margin: 0 auto; direction: ltr; align-items: start; }
+.fans-club-form-card { position: relative; z-index: 1; min-width: 0; margin-top: -112px; padding: 42px 40px 40px; border-radius: 36px; background: #fff; box-shadow: 0 0 0 6px rgba(25, 26, 32, .035), 0 21px 34px rgba(67, 4, 20, .18); direction: rtl; scroll-margin-top: 22px; }
+.fans-club-form-card__header { text-align: right; }
+.fans-club-form-card__header h2 { margin: 0; color: #151921; font-size: 26px; font-weight: 750; line-height: 1.5; }
+.fans-club-form-card__header p { margin: 17px 0 0; color: #88817d; font-size: 15px; line-height: 1.8; }
+.fans-club-progress { display: flex; gap: 10px; margin: 32px 0 0; padding: 0; list-style: none; direction: rtl; }
+.fans-club-progress li { min-width: 0; flex: 1; color: #77736f; font-size: 13px; line-height: 1.5; text-align: right; }
+.fans-club-progress__bar { display: block; width: 100%; height: 5px; margin-bottom: 10px; border-radius: 999px; background: #e4e4e4; }
+.fans-club-progress li.is-current { color: #c30a32; font-weight: 700; }
+.fans-club-progress li.is-complete .fans-club-progress__bar,
+.fans-club-progress li.is-current .fans-club-progress__bar { background: #bb0e30; }
+.fans-club-form { margin: 0; }
+.fans-club-step { margin-top: 42px; }
+.fans-club-field { min-width: 0; margin-bottom: 26px; }
+.fans-club-field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-bottom: 26px; }
+.fans-club-field-grid .fans-club-field { margin-bottom: 0; }
+.fans-club-field label,
+.fans-club-range-field label { display: block; margin-bottom: 12px; color: #171a21; font-size: 16px; font-weight: 500; line-height: 1.5; text-align: right; }
+.fans-club-required { color: #d40937; }
+.fans-club-field input,
+.fans-club-field select,
+.fans-club-field textarea { display: block; width: 100%; min-width: 0; border: 1px solid #dedede; border-radius: 20px; background: #fff; color: #171a21; font: inherit; font-size: 17px; outline: none; transition: border-color .2s ease; }
+.fans-club-field input,
+.fans-club-field select { height: 70px; padding: 0 20px; }
+.fans-club-field input::placeholder { color: #8f8884; opacity: 1; }
+.fans-club-field input:focus,
+.fans-club-field select:focus,
+.fans-club-field textarea:focus { border-color: #cb0c35; }
+.fans-club-field input.is-invalid { border-color: #e10c39; }
+.fans-club-field #fans-phone { direction: ltr; text-align: right; }
+.fans-club-field #fans-email { direction: ltr; text-align: left; }
+.fans-club-error { margin: 7px 3px 0; color: #d00937; font-size: 13px; line-height: 1.5; text-align: right; }
+.fans-club-select { position: relative; display: block; }
+.fans-club-select::after { content: ''; position: absolute; left: 21px; top: 50%; width: 9px; height: 9px; border-right: 2px solid #1a1c22; border-bottom: 2px solid #1a1c22; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.fans-club-select select { appearance: none; padding-left: 45px; cursor: pointer; }
+.fans-club-actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 34px; direction: ltr; }
+.fans-club-button { display: inline-flex; align-items: center; justify-content: center; min-height: 61px; padding: 12px 32px; border-radius: 999px; font: inherit; font-size: 16px; font-weight: 700; line-height: 1.4; cursor: pointer; }
+.fans-club-button--primary { min-width: 170px; border: 0; background: linear-gradient(110deg, #d00836, #a80529); box-shadow: 0 12px 18px rgba(183, 9, 48, .22); color: #fff; }
+.fans-club-button--primary:hover { background: linear-gradient(110deg, #df123e, #ac082c); }
+.fans-club-button--secondary { min-width: 114px; border: 1px solid #dedede; background: #fff; color: #171a21; }
+.fans-club-button--secondary:hover { border-color: #bf9da6; }
+.fans-club-choice-group,
+.fans-club-rating-field { min-width: 0; margin: 0 0 26px; padding: 0; border: 0; text-align: right; }
+.fans-club-choice-group legend,
+.fans-club-rating-field legend { width: 100%; margin-bottom: 16px; color: #171a21; font-size: 16px; font-weight: 500; line-height: 1.5; }
+.fans-club-choices { display: flex; flex-wrap: wrap; gap: 10px; direction: rtl; }
+.fans-club-choices button { min-height: 53px; padding: 10px 29px; border: 1px solid #e1e1e1; border-radius: 999px; background: #fff; color: #171a21; font: inherit; font-size: 15px; line-height: 1.45; white-space: nowrap; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.fans-club-choice-group[data-choice-group="skin"] .fans-club-choices button { padding-inline: 26px; }
+.fans-club-choices button:hover { border-color: #d6a7b4; }
+.fans-club-choices button[aria-pressed="true"] { border-color: #c8103b; background: #fff0f3; color: #b3072c; }
+.fans-club-rating-field { margin-bottom: 27px; }
+.fans-club-stars { display: flex; gap: 7px; direction: rtl; }
+.fans-club-stars button { display: grid; place-items: center; width: 51px; height: 54px; padding: 0; border: 0; background: transparent; color: #d2d2d2; font-size: 39px; line-height: 1; cursor: pointer; }
+.fans-club-stars button.is-selected,
+.fans-club-stars button:hover { color: #c8103b; }
+.fans-club-range-field { margin-bottom: 28px; }
+.fans-club-range-row { display: flex; align-items: center; gap: 28px; direction: ltr; }
+.fans-club-range-row output { flex: 0 0 36px; color: #ca0d38; font-size: 23px; font-weight: 700; text-align: center; }
+.fans-club-range-row input[type="range"] { flex: 1; width: 100%; height: 9px; margin: 0; border: 1px solid #d2d2d2; border-radius: 999px; appearance: none; background: linear-gradient(to left, #bd0e32 0 var(--range-fill), #e4e4e4 var(--range-fill) 100%); direction: rtl; cursor: pointer; }
+.fans-club-range-row input[type="range"]::-webkit-slider-thumb { width: 19px; height: 19px; border: 0; border-radius: 50%; appearance: none; background: #c8103b; }
+.fans-club-range-row input[type="range"]::-moz-range-thumb { width: 19px; height: 19px; border: 0; border-radius: 50%; background: #c8103b; }
+.fans-club-field textarea { min-height: 136px; padding: 17px 20px; resize: vertical; }
+.fans-club-consent { display: flex; align-items: center; gap: 16px; margin: 28px 0 0; color: #86817d; font-size: 15px; line-height: 1.6; cursor: pointer; }
+.fans-club-consent input { flex: 0 0 20px; width: 20px; height: 20px; margin: 0; accent-color: #c8103b; cursor: pointer; }
+.fans-club-benefits { display: flex; flex-direction: column; gap: 18px; min-width: 0; margin-top: 26px; direction: rtl; }
+.fans-club-benefit { display: flex; align-items: center; gap: 22px; min-height: 123px; padding: 22px 25px; border: 1px solid rgba(255, 255, 255, .55); background: rgba(255, 255, 255, .19); color: #fff; text-align: right; }
+.fans-club-benefit__icon { display: grid; place-items: center; flex: 0 0 58px; width: 58px; height: 58px; border-radius: 50%; background: #fff; color: #d00a38; }
+.fans-club-benefit__icon svg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.fans-club-benefit strong,
+.fans-club-benefit small { display: block; }
+.fans-club-benefit strong { color: #fff; font-size: 18px; font-weight: 750; line-height: 1.5; }
+.fans-club-benefit small { margin-top: 8px; color: #fff; font-size: 14px; font-weight: 500; line-height: 1.6; }
+@media (max-width: 1050px) {
+    .fans-club-layout { gap: 24px; }
+    .fans-club-form-card { padding-inline: 30px; }
+    .fans-club-benefit { gap: 16px; padding-inline: 18px; }
+    .fans-club-benefit strong { font-size: 16px; }
+    .fans-club-benefit small { font-size: 13px; }
+}
+@media (max-width: 900px) {
+    .fans-club-hero { height: 430px; padding-top: 50px; }
+    .fans-club-hero h1 { font-size: clamp(37px, 5.5vw, 54px); }
+    .fans-club-hero p { font-size: 16px; }
+    .fans-club-layout { grid-template-columns: minmax(0, 1fr); max-width: 780px; }
+    .fans-club-form-card { margin-top: -85px; }
+    .fans-club-benefits { margin-top: 12px; }
+}
+@media (max-width: 640px) {
+    .fans-club-hero { height: 375px; padding: 35px 20px 0; }
+    .fans-club-hero h1 { margin-top: 24px; font-size: clamp(31px, 7.4vw, 43px); line-height: 1.45; }
+    .fans-club-hero p { margin-top: 18px; font-size: 14px; line-height: 1.9; }
+    .fans-club-desktop-break { display: none; }
+    .fans-club-band { padding: 0 14px 72px; }
+    .fans-club-form-card { margin-top: -70px; padding: 28px 22px 30px; border-radius: 28px; }
+    .fans-club-form-card__header h2 { font-size: 22px; }
+    .fans-club-form-card__header p { margin-top: 10px; font-size: 13px; }
+    .fans-club-progress { gap: 6px; margin-top: 25px; }
+    .fans-club-progress li { font-size: 11px; }
+    .fans-club-step { margin-top: 32px; }
+    .fans-club-field-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .fans-club-field label, .fans-club-range-field label,
+    .fans-club-choice-group legend, .fans-club-rating-field legend { font-size: 14px; }
+    .fans-club-field input, .fans-club-field select { height: 58px; border-radius: 16px; font-size: 15px; }
+    .fans-club-field textarea { border-radius: 16px; }
+    .fans-club-choices { gap: 8px; }
+    .fans-club-choices button,
+    .fans-club-choice-group[data-choice-group="skin"] .fans-club-choices button { min-height: 43px; padding: 8px 15px; font-size: 13px; }
+    .fans-club-benefit { min-height: 100px; }
+    .fans-club-benefit__icon { flex-basis: 48px; width: 48px; height: 48px; }
+    .fans-club-benefit__icon svg { width: 24px; height: 24px; }
+}
+@media (max-width: 390px) {
+    .fans-club-hero { height: 400px; }
+    .fans-club-form-card { padding-inline: 18px; }
+    .fans-club-progress li { font-size: 10px; }
+    .fans-club-actions { gap: 10px; }
+    .fans-club-button { min-width: 0; padding-inline: 20px; font-size: 14px; }
+    .fans-club-benefit strong { font-size: 14px; }
+    .fans-club-benefit small { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fans-club-field input, .fans-club-field select, .fans-club-field textarea,
+    .fans-club-choices button { transition: none; }
+}

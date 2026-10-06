@@ -1,0 +1,1193 @@
+/* The single-product layout is scoped here so the homepage stays untouched. */
+body.single-product .genosys-product-page {
+    width: min(100%, 1500px);
+    margin-inline: auto;
+    padding: 24px clamp(20px, 4vw, 72px) 90px;
+    color: #252a30;
+}
+
+body.single-product .genosys-product-page .woocommerce-breadcrumb {
+    margin: 0 0 26px;
+    color: #85858a;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: right;
+}
+
+body.single-product .genosys-product-page .woocommerce-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body.single-product .genosys-product-page .woocommerce-breadcrumb a:hover {
+    color: #c8103b;
+}
+
+.genosys-product-page .genosys-product {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+.genosys-product-page .genosys-product__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(22px, 2.5vw, 38px);
+    min-width: 0;
+}
+
+.genosys-product-page .genosys-product__gallery {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+    min-width: 0;
+    min-height: 630px;
+    padding: 0;
+    overflow: hidden;
+    border: 5px solid #f4f4f5;
+    border-radius: 42px;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(37, 42, 48, .045);
+}
+
+.genosys-product-page .genosys-product__info.summary {
+    grid-column: 1;
+    grid-row: 1;
+    float: none !important;
+    display: flex;
+    flex-direction: column;
+    width: auto !important;
+    min-width: 0;
+    min-height: 630px;
+    margin: 0 !important;
+    padding: clamp(28px, 3vw, 42px);
+    border: 1px solid #f6c6ce;
+    border-radius: 42px;
+    background: radial-gradient(ellipse at 5% 105%, rgba(216, 32, 57, .30), transparent 66%), linear-gradient(155deg, #fff 37%, #fffafb 67%, #fceef0 100%);
+    box-shadow: 0 8px 26px rgba(152, 40, 59, .055), inset 0 1px 0 rgba(255, 255, 255, .9);
+    text-align: right;
+}
+
+/* WooCommerce's default floated gallery must participate in the grid. */
+body.single-product .genosys-product .genosys-product__gallery div.images.woocommerce-product-gallery {
+    float: none;
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    margin: 0;
+    opacity: 1;
+    background: #fff;
+}
+
+.genosys-product__gallery .woocommerce-product-gallery__wrapper,
+.genosys-product__gallery .flex-viewport {
+    width: 100%;
+    height: 100% !important;
+    min-width: 0;
+    margin: 0;
+    background: #fff;
+}
+
+.genosys-product__gallery .woocommerce-product-gallery__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    background: #fff;
+}
+
+.genosys-product__gallery .woocommerce-product-gallery__image > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    text-decoration: none;
+}
+
+body.single-product .genosys-product__gallery .woocommerce-product-gallery__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    background: #fff;
+}
+
+.genosys-product__gallery .flex-control-thumbs {
+    position: absolute;
+    right: 0;
+    bottom: 18px;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body.single-product .genosys-product__gallery .flex-control-thumbs li {
+    float: none;
+    width: 68px;
+    margin: 0;
+}
+
+body.single-product .genosys-product__gallery .flex-control-thumbs li img {
+    display: block;
+    width: 68px;
+    height: 68px;
+    padding: 5px;
+    border: 1px solid #e7e7e8;
+    border-radius: 17px;
+    object-fit: contain;
+    background: #f9f9f9;
+    opacity: 1;
+    cursor: pointer;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.genosys-product__gallery .flex-control-thumbs li img.flex-active,
+.genosys-product__gallery .flex-control-thumbs li img:hover {
+    border-color: #d0093d;
+    box-shadow: 0 0 0 3px rgba(208, 9, 61, .10);
+}
+
+body.single-product .genosys-product__gallery .woocommerce-product-gallery__trigger {
+    top: 22px;
+    left: 22px;
+    right: auto;
+    z-index: 4;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #eeeeef;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+}
+
+.genosys-product__gallery-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 5;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #d0093d, #a80630);
+    box-shadow: 0 8px 16px rgba(186, 6, 49, .20);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.genosys-product__gallery-badge--stock {
+    background: #56575b;
+    box-shadow: none;
+}
+
+.genosys-product__info .genosys-product__category {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    max-width: 100%;
+    padding: 6px 17px;
+    overflow: hidden;
+    border: 1px solid #f6c0c9;
+    border-radius: 999px;
+    background: #fff4f6;
+    color: #c8103b;
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.genosys-product__info .genosys-product__category:hover {
+    background: #ffe7eb;
+}
+
+body.single-product .genosys-product__info .product_title {
+    margin: 25px 0 12px;
+    color: #20242a;
+    font-size: clamp(25px, 2.2vw, 34px);
+    font-weight: 650;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.genosys-product__info .woocommerce-product-details__short-description {
+    margin: 0;
+    color: #797b80;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.genosys-product__info .woocommerce-product-details__short-description p {
+    margin: 0;
+}
+
+.genosys-product__info .woocommerce-product-rating {
+    margin: 0 0 8px;
+    color: #7c7d81;
+    font-size: 13px;
+}
+
+.genosys-product__info .woocommerce-product-rating .star-rating {
+    color: #c8103b;
+}
+
+.genosys-product__info .woocommerce-product-rating a {
+    color: inherit;
+}
+
+.genosys-product__info .genosys-product__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    min-height: 112px;
+    margin: 27px 0 0;
+    padding: 22px 0;
+    border-top: 1px solid rgba(115, 91, 97, .17);
+    border-bottom: 1px solid rgba(115, 91, 97, .17);
+}
+
+body.single-product .genosys-product__info .genosys-product__price .price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+    min-width: 0;
+    margin: 0;
+    color: #c8103b;
+    font-size: clamp(24px, 2.35vw, 36px);
+    font-weight: 700;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.genosys-product__price .price ins {
+    order: -1;
+    background: transparent;
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+}
+
+.genosys-product__price .price del {
+    color: #898b8f;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.genosys-product__price .woocommerce-Price-currencySymbol {
+    font-size: .48em;
+    font-weight: 600;
+}
+
+.genosys-product__price .genosys-product__discount {
+    display: inline-flex;
+    align-items: center;
+    min-height: 37px;
+    padding: 6px 15px;
+    border: 1px solid #f2c5cc;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .75);
+    color: #bc1039;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+body.single-product .genosys-product__price .price.genosys-product__price--unavailable {
+    color: #66686d;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.genosys-product__info .genosys-product__stock,
+.genosys-product__info .stock {
+    margin: 15px 0 0;
+    color: #696b70;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+body.single-product .genosys-product__info p.stock.in-stock {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    padding: 7px 15px;
+    border: 1px solid #b8dec9;
+    border-radius: 999px;
+    background: #eef8f2;
+    color: #27734a;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.genosys-product__info .genosys-product__sku {
+    margin: 18px 0 0;
+    color: #818287;
+    font-size: 12px;
+}
+
+.genosys-product__info .genosys-product__sku a {
+    color: #c8103b;
+}
+
+/* Native WooCommerce forms remain functional: these rules only restyle them. */
+body.single-product .genosys-product__info form.cart {
+    width: 100%;
+    margin: auto 0 0;
+    padding-top: 28px;
+}
+
+body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+}
+
+body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart::before,
+body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart::after {
+    display: none;
+}
+
+body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart .quantity {
+    flex: 0 0 148px;
+}
+
+body.single-product .genosys-product__info form.cart .quantity,
+body.single-product .genosys-product__info .woocommerce-variation-add-to-cart .quantity {
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 54px;
+    min-width: 0;
+    margin: 0;
+    padding: 0 6px;
+    border: 1px solid #e1e2e4;
+    border-radius: 999px;
+    background: #fff;
+}
+
+body.single-product .genosys-product__info form.cart .quantity input.qty {
+    float: none;
+    flex: 1 1 auto;
+    width: 50px;
+    min-width: 0;
+    height: 50px;
+    margin: 0;
+    padding: 0 4px;
+    border: 0;
+    background: transparent;
+    color: #24282d;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    box-shadow: none;
+}
+
+body.single-product .genosys-product__info form.cart .quantity input.qty[readonly] {
+    pointer-events: none;
+    user-select: none;
+    caret-color: transparent;
+}
+
+.genosys-product__info form.cart .quantity .genosys-qty-value {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: #24282d;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    user-select: none;
+}
+
+.genosys-product__info form.cart .quantity .genosys-qty-button {
+    flex: 0 0 32px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #252a30;
+    font-family: inherit;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.genosys-product__info form.cart .quantity .genosys-qty-button:hover {
+    background: #fff0f3;
+    color: #c8103b;
+}
+
+.genosys-product__info form.cart .quantity .genosys-qty-button:disabled {
+    color: #b9b9bb;
+    cursor: not-allowed;
+}
+
+.genosys-product__info form.cart .quantity input.qty::-webkit-inner-spin-button,
+.genosys-product__info form.cart .quantity input.qty::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.genosys-product__info form.cart .quantity input.qty[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.genosys-product__info form.cart .quantity input.qty:focus-visible {
+    outline: 2px solid #c8103b;
+    outline-offset: 0;
+    border-radius: 12px;
+}
+
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button,
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button,
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button.alt {
+    float: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 54px;
+    margin: 0;
+    padding: 11px 22px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #cf0839, #a80831);
+    box-shadow: 0 10px 20px rgba(185, 10, 52, .20);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    transition: box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button:hover,
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button:hover,
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button.alt:hover {
+    background: #a80831;
+    box-shadow: 0 12px 23px rgba(185, 10, 52, .27);
+    transform: translateY(-1px);
+}
+
+body.single-product .genosys-product__info form.cart .single_add_to_cart_button:disabled {
+    box-shadow: none;
+    opacity: .5;
+    transform: none;
+    cursor: not-allowed;
+}
+
+body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart .single_add_to_cart_button {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+}
+
+.genosys-product__info form.variations_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.genosys-product__info form.variations_form table.variations {
+    width: 100%;
+    margin: 0;
+    border: 0;
+}
+
+.genosys-product__info form.variations_form table.variations tbody,
+.genosys-product__info form.variations_form table.variations tr {
+    display: block;
+    width: 100%;
+}
+
+.genosys-product__info form.variations_form table.variations td,
+.genosys-product__info form.variations_form table.variations th {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    text-align: right;
+}
+
+.genosys-product__info form.variations_form table.variations label {
+    display: block;
+    margin: 0 0 7px;
+    color: #45484d;
+    font-size: 13px;
+}
+
+.genosys-product__info form.variations_form table.variations select {
+    width: 100%;
+    min-height: 46px;
+    padding: 8px 14px;
+    border: 1px solid #e8cdd1;
+    border-radius: 13px;
+    background: #fff;
+    color: #2d3034;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.genosys-product__info form.variations_form .reset_variations {
+    display: inline-block;
+    margin: 7px 0 0;
+    color: #a13a50;
+    font-size: 12px;
+}
+
+.genosys-product__info .woocommerce-variation-description,
+.genosys-product__info .woocommerce-variation-availability {
+    color: #6a6d71;
+    font-size: 13px;
+}
+
+.genosys-product__info .woocommerce-variation-price {
+    margin: 5px 0 12px;
+}
+
+.genosys-product.is-variation-synced .woocommerce-variation-price {
+    display: none;
+}
+
+.genosys-product__info .woocommerce-variation-add-to-cart {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* Native description, attributes, comments and related products follow the hero. */
+.genosys-product-page .woocommerce-tabs {
+    clear: both;
+    margin-top: clamp(60px, 6vw, 94px);
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 26px;
+    padding: 5px;
+    border: 0;
+    border-radius: 999px;
+    background: #f5f5f6;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs::before,
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li::before,
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li::after {
+    content: none;
+    display: none;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li,
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li.active {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: none;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li.active {
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(37, 42, 48, .07);
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li a {
+    display: block;
+    padding: 10px 20px;
+    color: #73767c;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li.active a,
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li a:hover {
+    color: #bd0a36;
+}
+
+.genosys-product-page .woocommerce-tabs .panel {
+    max-width: 100%;
+    margin: 0;
+    padding: 28px clamp(20px, 3vw, 36px);
+    border: 1px solid #f0e5e7;
+    border-radius: 25px;
+    background: #fff;
+    color: #4e5156;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.genosys-product-page .woocommerce-tabs .panel h2 {
+    margin: 0 0 16px;
+    color: #2a2c31;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.genosys-product-page .woocommerce-tabs table.shop_attributes {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.genosys-product-page .woocommerce-tabs table.shop_attributes th,
+.genosys-product-page .woocommerce-tabs table.shop_attributes td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0e5e7;
+    background: transparent;
+    font-style: normal;
+    text-align: right;
+}
+
+.genosys-product-page .woocommerce-tabs table.shop_attributes th {
+    width: 32%;
+    color: #76787d;
+    font-weight: 500;
+}
+
+.genosys-product-page .woocommerce-tabs #review_form_wrapper {
+    max-width: 720px;
+}
+
+.genosys-product-page .woocommerce-tabs #review_form input:not([type="submit"]),
+.genosys-product-page .woocommerce-tabs #review_form textarea {
+    max-width: 100%;
+    padding: 10px 13px;
+    border: 1px solid #e7dade;
+    border-radius: 11px;
+    font-family: inherit;
+}
+
+body.single-product .genosys-product-page .woocommerce-tabs #review_form input[type="submit"] {
+    border-radius: 999px;
+    background: #c8103b;
+    color: #fff;
+    font-family: inherit;
+}
+
+.genosys-product-page .related,
+.genosys-product-page .upsells {
+    clear: both;
+    margin-top: 64px;
+}
+
+.genosys-product-page .related > h2 {
+    margin: 0 0 26px;
+    color: #292c2e;
+    font-size: clamp(22px, 1.6vw, 30px);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.genosys-product-page .upsells > h2 {
+    margin: 0 0 24px;
+    color: #292c2e;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .genosys-product-page .genosys-product__hero {
+        gap: 18px;
+    }
+
+    .genosys-product-page .genosys-product__gallery,
+    .genosys-product-page .genosys-product__info.summary {
+        min-height: 520px;
+        border-radius: 32px;
+    }
+
+    .genosys-product-page .genosys-product__info.summary {
+        padding: 26px;
+    }
+
+    body.single-product .genosys-product__info .genosys-product__price .price {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 700px) {
+    body.single-product .genosys-product-page {
+        padding: 14px 18px 68px;
+    }
+
+    .genosys-product-page .genosys-product__hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .genosys-product-page .genosys-product__gallery {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 390px;
+        padding: 0;
+        border-width: 3px;
+        border-radius: 29px;
+    }
+
+    .genosys-product-page .genosys-product__info.summary {
+        grid-column: 1;
+        grid-row: 2;
+        min-height: 0;
+        padding: 25px 22px;
+        border-radius: 29px;
+    }
+
+    body.single-product .genosys-product__gallery .flex-control-thumbs li,
+    body.single-product .genosys-product__gallery .flex-control-thumbs li img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .genosys-product__gallery-badge {
+        top: 16px;
+        right: 16px;
+        padding: 7px 14px;
+        font-size: 11px;
+    }
+
+    body.single-product .genosys-product__gallery .woocommerce-product-gallery__trigger {
+        top: 14px;
+        left: 14px;
+        width: 42px;
+        height: 42px;
+    }
+
+    body.single-product .genosys-product__info .product_title {
+        margin-top: 18px;
+        font-size: clamp(22px, 6vw, 28px);
+    }
+
+    .genosys-product__info .genosys-product__price {
+        min-height: 95px;
+        margin-top: 20px;
+        padding: 18px 0;
+    }
+
+    body.single-product .genosys-product__info .genosys-product__price .price {
+        font-size: clamp(22px, 6vw, 29px);
+    }
+
+    body.single-product .genosys-product__info form.cart {
+        padding-top: 25px;
+    }
+
+    .genosys-product-page .woocommerce-tabs {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 420px) {
+    body.single-product .genosys-product-page {
+        padding-inline: 14px;
+    }
+
+    .genosys-product__info .woocommerce-variation-add-to-cart {
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 9px;
+    }
+
+    body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart {
+        gap: 9px;
+    }
+
+    body.single-product .genosys-product.product-type-simple .genosys-product__info form.cart .quantity {
+        flex-basis: 112px;
+    }
+
+    body.single-product .genosys-product__info form.cart .quantity,
+    body.single-product .genosys-product__info .woocommerce-variation-add-to-cart .quantity {
+        width: 112px;
+        height: 50px;
+    }
+
+    body.single-product .genosys-product__info form.cart .single_add_to_cart_button,
+    body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button,
+    body.single-product .genosys-product__info form.cart .single_add_to_cart_button.button.alt {
+        min-height: 50px;
+        padding-inline: 10px;
+        font-size: 12px;
+    }
+
+    .genosys-product__price .price del {
+        font-size: 12px;
+    }
+
+    .genosys-product__price .genosys-product__discount {
+        padding-inline: 10px;
+        font-size: 11px;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs ul.tabs li a {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genosys-product__gallery .flex-control-thumbs li img,
+    body.single-product .genosys-product__info form.cart .single_add_to_cart_button {
+        transition: none;
+    }
+}
+
+/* WooCommerce's real description, attributes and review tabs. */
+body.single-product .genosys-product .woocommerce-tabs {
+    margin-top: clamp(58px, 6vw, 94px);
+    direction: rtl;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 68px;
+    margin: 0 0 35px;
+    padding: 7px;
+    overflow-x: auto;
+    border: 0;
+    border-radius: 999px;
+    background: #f6f5f4;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li {
+    flex: 0 0 auto;
+    border-radius: 999px;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li.active {
+    background: #fff;
+    box-shadow: 0 7px 18px rgba(34, 34, 40, .10);
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 135px;
+    min-height: 54px;
+    padding: 9px 22px;
+    color: #79787a;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li.active a,
+body.single-product .genosys-product .woocommerce-tabs ul.tabs li a:hover {
+    color: #c8103b;
+}
+
+body.single-product .genosys-product .woocommerce-tabs .panel {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #242329;
+    font-size: 16px;
+    line-height: 2.1;
+    text-align: right;
+}
+
+body.single-product .genosys-product .woocommerce-tabs .panel h2 {
+    margin: 0 0 24px;
+    color: #1c1b20;
+    font-size: clamp(21px, 1.65vw, 26px);
+    font-weight: 650;
+    line-height: 1.7;
+}
+
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description h3,
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description h4 {
+    margin: 28px 0 8px;
+    color: #1c1b20;
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.8;
+}
+
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description p {
+    margin: 0 0 18px;
+}
+
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description ul {
+    margin: 12px 0 22px;
+    padding: 0;
+    list-style: none;
+}
+
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description ul li {
+    position: relative;
+    margin: 7px 0;
+    padding-inline-start: 24px;
+}
+
+.genosys-product-page .woocommerce-tabs .woocommerce-Tabs-panel--description ul li::before {
+    content: '✓';
+    position: absolute;
+    inset-inline-start: 0;
+    color: #c8103b;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+body.single-product .genosys-product .woocommerce-tabs .woocommerce-Tabs-panel--additional_information table.shop_attributes {
+    display: block;
+    width: 100%;
+    margin: 24px 0 0;
+    border: 0;
+    border-collapse: separate;
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes tbody {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    min-height: 78px;
+    padding: 14px 26px;
+    border: 1px solid #f5b5c0;
+    border-radius: 24px;
+    background: radial-gradient(ellipse at 5% 110%, rgba(224, 66, 86, .18), transparent 72%), linear-gradient(140deg, #fff 25%, #fff4f6 100%);
+    box-shadow: 0 6px 15px rgba(32, 28, 34, .045);
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes th,
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes td {
+    display: flex;
+    align-items: center;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+    line-height: 1.7;
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes th {
+    flex: 1 1 auto;
+    gap: 12px;
+    color: #858188;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: right;
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes th::before {
+    content: '';
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c8103b;
+}
+
+body.single-product .genosys-product .woocommerce-tabs table.shop_attributes td {
+    flex: 0 1 50%;
+    justify-content: flex-end;
+    color: #222126;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.genosys-product-page .woocommerce-tabs table.shop_attributes td p {
+    margin: 0;
+}
+
+body.single-product .genosys-product #reviews #comments h2 {
+    margin: 0 0 22px;
+    color: #1c1b20;
+    font-size: clamp(21px, 1.65vw, 26px);
+    font-weight: 650;
+}
+
+body.single-product .genosys-product #reviews .woocommerce-noreviews {
+    margin: 0 0 23px;
+    color: #242329;
+    font-size: 16px;
+}
+
+body.single-product .genosys-product #reviews #review_form_wrapper {
+    max-width: 1065px;
+    margin: 25px 0 0 auto;
+}
+
+.genosys-product-page #review_form .comment-reply-title,
+.genosys-product-page #review_form .comment-form-rating > label,
+.genosys-product-page #review_form .comment-form-comment > label {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.genosys-product-page #review_form .comment-form-rating {
+    margin: 0 0 25px;
+}
+
+body.single-product .genosys-product #review_form p.stars {
+    margin: 0;
+    color: #c8103b;
+    font-size: 25px;
+    line-height: 1.6;
+}
+
+body.single-product .genosys-product #review_form p.stars a,
+body.single-product .genosys-product #review_form p.stars a::before {
+    color: #c8103b;
+}
+
+body.single-product .genosys-product #review_form .comment-form-comment textarea {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    padding: 20px 24px;
+    border: 1px solid #dedfe1;
+    border-radius: 26px;
+    background: #fff;
+    color: #242329;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.9;
+    text-align: right;
+    resize: vertical;
+}
+
+body.single-product .genosys-product #review_form .comment-form-comment textarea::placeholder {
+    color: #878389;
+    opacity: 1;
+}
+
+.genosys-product-page #review_form .form-submit {
+    margin: 20px 0 0;
+    text-align: right;
+}
+
+body.single-product .genosys-product-page .woocommerce-tabs #review_form input[type="submit"] {
+    min-width: 105px;
+    min-height: 55px;
+    padding: 10px 25px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #cf0839, #a80831);
+    box-shadow: 0 10px 20px rgba(185, 10, 52, .19);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    body.single-product .genosys-product .woocommerce-tabs ul.tabs {
+        width: 100%;
+        min-height: 56px;
+        margin-bottom: 28px;
+        padding: 5px;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs ul.tabs li {
+        flex: 1 0 auto;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs ul.tabs li a {
+        min-width: 0;
+        min-height: 46px;
+        padding: 8px 13px;
+        font-size: 12px;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs .panel {
+        font-size: 14px;
+        line-height: 2;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs table.shop_attributes tbody {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 11px;
+    }
+
+    body.single-product .genosys-product .woocommerce-tabs table.shop_attributes tr {
+        min-height: 68px;
+        padding: 12px 17px;
+        border-radius: 20px;
+    }
+
+    body.single-product .genosys-product #reviews #review_form_wrapper {
+        max-width: 100%;
+    }
+}
