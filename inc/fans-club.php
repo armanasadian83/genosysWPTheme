@@ -1,5 +1,5 @@
 <?php
-/** Self-contained route for the visual-only customer club page. */
+/** Self-contained route for the customer and professional club questionnaires. */
 defined( 'ABSPATH' ) || exit;
 
 function genosys_register_fans_club_route() {
@@ -29,6 +29,18 @@ function genosys_fans_club_request_path() {
 function genosys_is_fans_club() {
 	return genosys_fans_club_request_path() && '1' === (string) get_query_var( 'genosys_fans_club' );
 }
+
+/** Account identity and membership state must never be served from a public page cache. */
+function genosys_fans_club_require_account() {
+	if ( ! genosys_fans_club_request_path() ) { return; }
+	if ( ! defined( 'DONOTCACHEPAGE' ) ) { define( 'DONOTCACHEPAGE', true ); }
+	nocache_headers();
+	if ( ! is_user_logged_in() ) {
+		wp_safe_redirect( add_query_arg( 'redirect_to', home_url( '/fans-club/' ), home_url( '/login/' ) ) );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'genosys_fans_club_require_account', -1 );
 
 function genosys_fans_club_main_query( $query ) {
 	if ( $query->is_main_query() && genosys_fans_club_request_path() && $query->get( 'genosys_fans_club' ) ) {

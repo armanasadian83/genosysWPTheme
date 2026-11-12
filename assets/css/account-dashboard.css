@@ -1,0 +1,274 @@
+/* Account dashboard only. Other WooCommerce account endpoints keep their layouts. */
+.gaccount {
+    --gaccount-red: #cf0636;
+    --gaccount-deep: #a70828;
+    --gaccount-ink: #1d1d24;
+    --gaccount-muted: #89847f;
+    --gaccount-line: #e5e2e1;
+    direction: rtl;
+    color: var(--gaccount-ink);
+    background: #fff;
+    font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+    line-height: 1.75;
+    min-height: 65vh;
+}
+.gaccount *, .gaccount *::before, .gaccount *::after { box-sizing: border-box; }
+.gaccount [hidden] { display: none !important; }
+.gaccount input, .gaccount select, .gaccount button { font-family: inherit; }
+.gaccount button { cursor: pointer; }
+.gaccount :where(a) { color: inherit; }
+.gaccount svg { display: block; flex-shrink: 0; }
+.gaccount__container { width: min(1420px, calc(100% - 64px)); margin-inline: auto; padding: 22px 0 90px; }
+.gaccount__breadcrumb { display: flex; gap: 5px; align-items: center; margin: 0 0 18px; color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__breadcrumb a { text-decoration: none; }
+.gaccount__breadcrumb a:hover { color: var(--gaccount-red); }
+.gaccount__title { margin: 0 0 33px; font-size: 48px; line-height: 1.55; font-weight: 800; letter-spacing: -.8px; }
+.gaccount__layout { display: grid; grid-template-columns: minmax(280px, 388px) minmax(0, 1fr); gap: 30px; align-items: start; }
+.gaccount__sidebar, .gaccount__content { min-width: 0; }
+.gaccount__content { display: grid; gap: 23px; }
+.gaccount__identity { display: flex; flex-direction: column; align-items: center; min-height: 350px; padding: 32px 24px 29px; border: 1px solid #ffc7d2; border-radius: 34px; background: radial-gradient(ellipse at 24% 110%, #edb8bd 0, #f8e1e3 35%, #fffcfc 70%, #fff 87%); box-shadow: 0 18px 26px -22px #b83e5166; text-align: center; }
+.gaccount__avatar { display: grid; place-items: center; flex-shrink: 0; overflow: hidden; border-radius: 50%; background: linear-gradient(135deg, #d20a38, #a50728); color: #fff; font-size: 49px; font-weight: 500; line-height: 1; box-shadow: 0 20px 25px -13px #b80a3c9e; }
+.gaccount__avatar img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.gaccount__avatar--sidebar { width: 115px; height: 115px; margin-bottom: 14px; }
+.gaccount__identity h2, .gaccount__identity-name { margin: 0 0 1px; color: var(--gaccount-ink); font-size: 24px; font-weight: 750; line-height: 1.6; overflow-wrap: anywhere; }
+.gaccount__phone-small { margin: 0 0 16px; color: var(--gaccount-muted); font-size: 14px; direction: ltr; unicode-bidi: isolate; }
+.gaccount__badge { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 8px; min-height: 40px; max-width: 100%; padding: 6px 15px; border: 1px solid transparent; border-radius: 999px; background: linear-gradient(125deg, #ce0a36, #a70828); color: #fff; font-size: 16px; font-weight: 750; line-height: 1.6; white-space: nowrap; box-shadow: 0 14px 20px -12px #b70a3e91; }
+.gaccount__badge svg { width: 18px; height: 18px; }
+.gaccount__badge[data-membership="new"] { background: #fff; border-color: #ff8da7; color: #c00c34; box-shadow: none; }
+.gaccount__badge[data-membership="returning"] { background: #25262b; color: #fff; box-shadow: 0 13px 18px -10px #2424265c; }
+.gaccount__badge[data-membership="returning"] svg { color: #f4bf52; }
+.gaccount__membership-date { margin: 12px 0 0; color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__nav { padding: 12px; margin-top: 23px; border: 1px solid #e6e3e2; border-radius: 36px; background: #fff; box-shadow: 0 0 0 6px #f6f6f580, 0 10px 26px #11131a0a; }
+.gaccount__nav-item { display: flex; align-items: center; gap: 14px; min-height: 63px; padding: 14px 18px; border-radius: 23px; color: var(--gaccount-ink); font-size: 16px; font-weight: 550; line-height: 1.5; text-decoration: none; transition: background .18s ease, color .18s ease, box-shadow .18s ease; }
+.gaccount__nav-item svg { width: 24px; height: 24px; color: #db0738; }
+.gaccount__nav-item:hover { color: var(--gaccount-red); background: #fff5f7; }
+.gaccount__nav-item.is-active, .gaccount__nav-item[aria-current="page"] { background: linear-gradient(110deg, #d00937, #ac082b); color: #fff; font-weight: 750; box-shadow: 0 16px 24px -13px #be0c3a99; }
+.gaccount__nav-item.is-active svg, .gaccount__nav-item[aria-current="page"] svg { color: #fff; }
+.gaccount__nav-item > span:first-of-type { flex: 1; }
+.gaccount__nav-count { display: grid; place-items: center; min-width: 24px; height: 24px; padding: 1px 6px; border-radius: 999px; background: #cd123c; color: #fff; font-size: 12px; font-weight: 700; line-height: 1; }
+.gaccount__nav-item--logout { margin: 9px 10px 0; padding-inline: 8px; border-top: 1px solid #e3e1e0; border-radius: 0 0 18px 18px; color: #c20a31; }
+.gaccount__hero, .gaccount__card { border: 1px solid #ece9e8; border-radius: 36px; background: #fff; box-shadow: 0 0 0 6px #f7f7f780, 0 10px 26px #11131a0a; }
+.gaccount__hero { display: flex; align-items: center; gap: 26px; min-height: 311px; padding: 32px 35px; background: radial-gradient(ellipse at 2% 105%, #f8e1e4 0, #fdf4f5 36%, #fff 73%); }
+.gaccount__avatar--hero { width: 130px; height: 130px; font-size: 56px; }
+.gaccount__hero-copy { min-width: 0; }
+.gaccount__hero-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 11px 17px; }
+.gaccount__hero-heading h2, .gaccount__hero-name { margin: 0; color: var(--gaccount-ink); font-size: 30px; line-height: 1.55; font-weight: 800; overflow-wrap: anywhere; }
+.gaccount__hero-subtitle { margin: 11px 0 15px; color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__avatar-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 17px; }
+.gaccount__button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 45px; padding: 9px 20px; border: 1px solid #e80c3a; border-radius: 999px; background: #fff; color: #d40a36; font-size: 16px; font-weight: 650; line-height: 1.6; text-decoration: none; transition: background .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.gaccount__button svg { width: 18px; height: 18px; }
+.gaccount__button:hover { border-color: #ae082c; background: #fff5f7; }
+.gaccount__button--primary { min-height: 54px; padding-inline: 25px; border-color: transparent; background: linear-gradient(115deg, #cf0c39, #a70728); color: #fff; box-shadow: 0 14px 22px -11px #b90b3c91; font-size: 18px; font-weight: 750; }
+.gaccount__button--primary:hover { border-color: transparent; background: linear-gradient(115deg, #da123f, #ae082c); box-shadow: 0 17px 24px -12px #b90b3ca3; }
+.gaccount__button:disabled { cursor: default; opacity: .6; box-shadow: none; }
+.gaccount[aria-busy="true"] .gaccount__button:disabled { cursor: wait; }
+.gaccount__button:focus-visible, .gaccount__nav-item:focus-visible { outline: 2px solid #d2103b; outline-offset: 4px; }
+.gaccount__avatar-actions [data-avatar-remove] { border-color: #ff9daf; }
+.gaccount__stats { display: flex; flex-wrap: wrap; gap: 14px; }
+.gaccount__stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; min-width: 138px; min-height: 86px; padding: 8px 24px; border-radius: 21px; background: #f5f4f2; text-align: center; }
+.gaccount__stat strong { color: #161a22; font-size: 21px; line-height: 1.5; font-weight: 750; }
+.gaccount__stat span { color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__card { min-width: 0; padding: 31px 35px 35px; }
+.gaccount__card-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 25px; }
+.gaccount__card-header h2 { display: flex; align-items: center; gap: 12px; margin: 0; color: #111722; font-size: 22px; font-weight: 800; line-height: 1.6; }
+.gaccount__card-header h2::before { content: ""; width: 6px; height: 25px; border-radius: 4px; background: #bf0a32; }
+.gaccount__fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 28px; }
+.gaccount__field { min-width: 0; margin: 0; }
+.gaccount__field--wide { grid-column: 1 / -1; }
+.gaccount__field label, .gaccount__field legend { display: block; margin: 0 0 9px; padding: 0; color: #141923; font-size: 16px; font-weight: 650; }
+.gaccount__field label small, .gaccount__field legend small { color: var(--gaccount-muted); font-size: 14px; font-weight: 400; }
+.gaccount__field label > span[aria-hidden], .gaccount__required { color: #de0639; }
+.gaccount__field input, .gaccount__field select, .gaccount__dialog input[type="tel"] { display: block; width: 100%; min-width: 0; height: 63px; margin: 0; padding: 12px 20px; border: 1px solid #dedbdc; border-radius: 18px; background: #fff; color: #121923; font-size: 17px; outline: none; transition: border-color .15s ease, box-shadow .15s ease, background .15s ease; }
+.gaccount__field input[readonly], .gaccount__field select:disabled { border-color: transparent; background: #f5f4f2; color: #171b24; opacity: 1; -webkit-text-fill-color: currentColor; cursor: default; }
+.gaccount__field select:disabled { color: #77736f; background: #f7f6f4; }
+.gaccount__field input[type="email"] { direction: ltr; text-align: right; }
+.gaccount__field select { appearance: none; padding-left: 45px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23d00635' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 7 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: left 19px center; cursor: pointer; }
+.gaccount__field select:disabled { background-image: none; }
+.gaccount__field input:focus:not([readonly]), .gaccount__field select:focus:not(:disabled), .gaccount__dialog input[type="tel"]:focus { border-color: #ef073d; box-shadow: 0 0 0 6px #fae7eb; }
+.gaccount__field input[aria-invalid="true"], .gaccount__dialog input[aria-invalid="true"] { border-color: #e90a39; }
+.gaccount__birth-fields { display: grid; grid-template-columns: .84fr 1.18fr 1fr; gap: 13px; }
+.gaccount__profile-actions { display: flex; flex-direction: row-reverse; justify-content: flex-start; gap: 12px; margin-top: 27px; }
+.gaccount__profile-actions .gaccount__button:not(.gaccount__button--primary) { min-height: 54px; min-width: 113px; font-size: 16px; }
+.gaccount__phone-card .gaccount__card-header { margin-bottom: 20px; }
+.gaccount__phone-description { margin: 0 0 28px; color: var(--gaccount-muted); font-size: 15px; }
+.gaccount__description { margin: 0 0 28px; color: var(--gaccount-muted); font-size: 15px; }
+.gaccount__phone-summary { display: flex; align-items: center; flex-wrap: wrap; gap: 17px; }
+.gaccount__phone-number, .gaccount__phone-summary > strong { font-size: 25px; line-height: 1.5; font-weight: 800; direction: ltr; unicode-bidi: isolate; }
+.gaccount__verified { display: inline-flex; align-items: center; gap: 7px; padding: 4px 15px; border-radius: 999px; background: #e8f2eb; color: #22803d; font-size: 14px; font-weight: 650; line-height: 1.7; }
+.gaccount__verified svg { width: 17px; height: 17px; }
+.gaccount__error { margin: 15px 0 0; color: #c90a35; font-size: 14px; line-height: 1.8; }
+.gaccount__notice { position: fixed; z-index: 100001; right: 50%; bottom: 30px; transform: translateX(50%); display: flex; align-items: center; gap: 11px; width: max-content; max-width: calc(100vw - 36px); padding: 15px 24px; border: 1px solid #e3e8e3; border-radius: 22px; background: #fff; box-shadow: 0 12px 42px #25242624; color: #1b7135; font-size: 15px; font-weight: 650; text-align: center; animation: gaccount-notice-in .2s ease both; }
+.gaccount__notice[data-tone="error"] { border-color: #f4ccd5; color: #c10a34; }
+.gaccount__dialog { direction: rtl; width: min(700px, calc(100vw - 36px)); max-width: 700px; max-height: calc(100dvh - 42px); margin: auto; padding: 0; border: 0; border-radius: 35px; background: #fff; color: var(--gaccount-ink); box-shadow: 0 34px 50px #1f1f1f50; font-family: Vazirmatn, Tahoma, Arial, sans-serif; overflow: auto; }
+.gaccount__dialog::backdrop { background: #0008; backdrop-filter: blur(5px); }
+.gaccount__dialog-card { padding: 33px 35px 30px; }
+.gaccount__dialog h2 { margin: 0 0 10px; font-size: 23px; line-height: 1.6; font-weight: 800; }
+.gaccount__dialog-description { margin: 0 0 30px; color: var(--gaccount-muted); font-size: 16px; }
+.gaccount__dialog .gaccount__description { margin: 0 0 30px; font-size: 16px; }
+.gaccount__phone-step > label { display: block; margin: 0 0 11px; color: #27252a; font-size: 16px; font-weight: 650; }
+.gaccount__dialog input[type="tel"] { direction: ltr; text-align: right; }
+.gaccount__dialog input[type="tel"]::placeholder { color: #8b8785; opacity: 1; }
+.gaccount__dialog-actions { display: flex; flex-direction: row-reverse; justify-content: flex-start; gap: 12px; margin-top: 27px; }
+.gaccount__dialog-actions .gaccount__button:not(.gaccount__button--primary) { min-width: 113px; min-height: 54px; font-size: 16px; }
+.gaccount__otp-caption { margin: 0 0 15px; color: #27252a; font-size: 18px; }
+.gaccount__otp-caption strong { direction: ltr; unicode-bidi: isolate; }
+.gaccount__code-description { margin: 0 0 15px; color: #27252a; font-size: 18px; }
+.gaccount__code-description strong { direction: ltr; unicode-bidi: isolate; }
+.gaccount__otp { display: flex; justify-content: center; gap: 13px; direction: ltr; margin-top: 16px; }
+.gaccount__otp input { display: block; width: 67px; min-width: 0; height: 75px; padding: 9px 0; border: 1px solid #dfdddc; border-radius: 20px; outline: none; background: #fff; color: #171b24; font: inherit; font-size: 25px; line-height: 1; text-align: center; direction: ltr; caret-color: #171b24; }
+.gaccount__otp input:focus { border-color: #ee063b; box-shadow: 0 0 0 6px #fae7eb; }
+.gaccount__phone-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
+.gaccount__phone-meta button { padding: 0; border: 0; background: transparent; color: #d30736; font-size: 14px; font-weight: 600; }
+.gaccount__phone-meta button:disabled { cursor: default; color: var(--gaccount-muted); }
+.gaccount__phone-meta [data-phone-timer] { direction: rtl; color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__phone-notice { margin: 15px 0 0; color: var(--gaccount-muted); font-size: 13px; line-height: 1.8; }
+.gaccount__address-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.gaccount__address { min-width: 0; padding: 23px; border: 1px solid #e6e2e2; border-radius: 24px; background: linear-gradient(150deg, #fff, #fffbfc); }
+.gaccount__address h3, .gaccount__notification h3 { margin: 0 0 14px; color: #181c24; font-size: 18px; font-weight: 700; }
+.gaccount__address p { min-height: 74px; margin: 0 0 22px; color: var(--gaccount-muted); font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
+.gaccount__notification-list { display: grid; gap: 17px; }
+.gaccount__notification { padding: 23px; border: 1px solid #e7e3e3; border-radius: 24px; background: #fdfbfb; }
+.gaccount__notification h3 a { text-decoration: none; }
+.gaccount__notification h3 a:hover { color: var(--gaccount-red); }
+.gaccount__notification p { margin: 0 0 16px; font-size: 15px; line-height: 1.95; overflow-wrap: anywhere; }
+.gaccount__notification time, .gaccount__empty { color: var(--gaccount-muted); font-size: 14px; }
+.gaccount__empty { margin: 0; padding: 24px 0 12px; }
+.gaccount__preferences { padding-top: 34px; padding-bottom: 33px; }
+.gaccount__preferences .gaccount__card-header { margin-bottom: 24px; }
+.gaccount__preferences-help { margin: 0 0 27px; color: var(--gaccount-muted); font-size: 15px; line-height: 1.8; }
+.gaccount__preference { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 111px; padding: 20px 5px; border-bottom: 1px dashed #e0dede; }
+.gaccount__preference:last-child { border-bottom: 0; }
+.gaccount__preference-copy { min-width: 0; }
+.gaccount__preference-copy > label { display: block; margin: 0; color: #151923; font-size: 18px; font-weight: 750; line-height: 1.7; cursor: pointer; }
+.gaccount__preference-copy > p { margin: 8px 0 0; color: var(--gaccount-muted); font-size: 14px; line-height: 1.8; }
+.gaccount__preference-copy > .gaccount__preference-feedback { color: #c10a34; font-size: 13px; }
+.gaccount__preference-switch { position: relative; display: block; flex: 0 0 60px; width: 60px; height: 34px; }
+.gaccount .gaccount__preference-switch > input { position: absolute; z-index: 1; inset: 0; display: block; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; border-radius: 999px; opacity: 0; cursor: pointer; }
+.gaccount__preference-track { position: absolute; inset: 0; display: block; border-radius: 999px; background: #d3d3d3; transition: background .18s ease, box-shadow .18s ease; }
+.gaccount__preference-track::after { content: ""; position: absolute; top: 3px; right: 3px; width: 28px; height: 28px; border-radius: 50%; background: #fff; box-shadow: 0 2px 4px #0003; transition: transform .18s ease; }
+.gaccount__preference-switch > input:checked + .gaccount__preference-track { background: linear-gradient(110deg, #cc0b36, #a70828); }
+.gaccount__preference-switch > input:checked + .gaccount__preference-track::after { transform: translateX(-26px); }
+.gaccount__preference-switch > input:focus-visible + .gaccount__preference-track { outline: 2px solid #d20a39; outline-offset: 4px; }
+.gaccount__preference-switch > input:disabled { cursor: default; }
+.gaccount__preference[data-saving="true"] .gaccount__preference-switch > input { cursor: wait; }
+.gaccount__preference[data-saving="true"] .gaccount__preference-track { box-shadow: 0 0 0 4px #f7e8ed; opacity: .7; }
+body.gaccount-modal-open { overflow: hidden; }
+@keyframes gaccount-notice-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 1250px) {
+    .gaccount__layout { grid-template-columns: 300px minmax(0, 1fr); gap: 25px; }
+    .gaccount__hero { padding: 29px; gap: 20px; }
+    .gaccount__avatar--hero { width: 110px; height: 110px; font-size: 48px; }
+    .gaccount__hero-heading { gap: 10px; }
+    .gaccount__hero-heading h2, .gaccount__hero-name { font-size: 25px; }
+    .gaccount__hero-heading .gaccount__badge { font-size: 12px; padding-inline: 12px; }
+    .gaccount__stat { min-width: 112px; padding-inline: 12px; }
+    .gaccount__stats { gap: 10px; }
+    .gaccount__card { padding: 29px; }
+}
+@media (max-width: 1000px) {
+    .gaccount__container { width: calc(100% - 40px); }
+    .gaccount__layout { grid-template-columns: 250px minmax(0, 1fr); gap: 22px; }
+    .gaccount__identity { padding-inline: 15px; }
+    .gaccount__hero { flex-direction: column; align-items: flex-start; min-height: 311px; }
+    .gaccount__hero-copy { width: 100%; }
+    .gaccount__hero-heading { flex-direction: column; align-items: flex-start; }
+    .gaccount__hero .gaccount__badge { min-height: 35px; }
+    .gaccount__fields { gap: 22px 18px; }
+    .gaccount__card-header { gap: 12px; }
+    .gaccount__card-header h2 { font-size: 20px; }
+    .gaccount__card-header .gaccount__button { padding-inline: 15px; font-size: 13px; }
+    .gaccount__stat { flex: 1; min-width: 99px; }
+    .gaccount__nav-item { gap: 11px; padding-inline: 12px; font-size: 15px; }
+    .gaccount__field input, .gaccount__field select { padding-inline: 15px; font-size: 16px; }
+    .gaccount__field select { padding-left: 32px; background-position: left 10px center; }
+    .gaccount__birth-fields { gap: 8px; }
+}
+@media (max-width: 760px) {
+    .gaccount__container { width: calc(100% - 36px); padding-top: 20px; padding-bottom: 60px; }
+    .gaccount__breadcrumb { margin-bottom: 12px; font-size: 12px; }
+    .gaccount__title { margin-bottom: 24px; font-size: 34px; }
+    .gaccount__layout { display: flex; flex-direction: column; gap: 25px; }
+    .gaccount__sidebar, .gaccount__content { width: 100%; }
+    .gaccount__sidebar { display: grid; grid-template-columns: 1fr; gap: 19px; }
+    .gaccount__identity { min-height: 0; padding: 25px 20px 23px; border-radius: 29px; }
+    .gaccount__avatar--sidebar { width: 92px; height: 92px; margin-bottom: 12px; font-size: 43px; }
+    .gaccount__identity h2, .gaccount__identity-name { font-size: 22px; }
+    .gaccount__phone-small { margin-bottom: 12px; }
+    .gaccount__membership-date { margin-top: 10px; font-size: 13px; }
+    .gaccount__nav { display: flex; gap: 7px; width: 100%; margin: 0; padding: 9px; border-radius: 26px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #e9abb9 transparent; }
+    .gaccount__nav-item { flex: 0 0 auto; min-height: 49px; gap: 8px; padding: 11px 14px; border-radius: 18px; white-space: nowrap; font-size: 13px; }
+    .gaccount__nav-item svg { width: 20px; height: 20px; }
+    .gaccount__nav-count { min-width: 20px; height: 20px; padding-inline: 4px; font-size: 11px; }
+    .gaccount__nav-item--logout { margin: 0; border: 0; border-radius: 18px; }
+    .gaccount__content { gap: 23px; }
+    .gaccount__hero, .gaccount__card { border-radius: 29px; }
+    .gaccount__hero { position: relative; flex-direction: row; align-items: flex-start; min-height: 0; gap: 16px; padding: 24px 20px; }
+    .gaccount__avatar--hero { width: 74px; height: 74px; font-size: 36px; margin-top: 3px; }
+    .gaccount__hero-heading h2, .gaccount__hero-name { font-size: 22px; }
+    .gaccount__hero-heading { gap: 8px; }
+    .gaccount__hero-subtitle { margin: 12px 0; font-size: 12px; }
+    .gaccount__avatar-actions { gap: 7px; margin-bottom: 16px; }
+    .gaccount__avatar-actions .gaccount__button { min-height: 38px; padding: 7px 12px; font-size: 12px; }
+    .gaccount__stats { width: calc(100% + 90px); margin-right: -90px; gap: 8px; }
+    .gaccount__stat { min-width: 0; min-height: 77px; padding-inline: 8px; border-radius: 18px; }
+    .gaccount__stat strong { font-size: 18px; }
+    .gaccount__stat span { font-size: 11px; }
+    .gaccount__card { padding: 24px 20px; }
+    .gaccount__card-header { gap: 10px; margin-bottom: 24px; }
+    .gaccount__card-header h2 { gap: 9px; font-size: 19px; }
+    .gaccount__card-header h2::before { width: 5px; height: 22px; }
+    .gaccount__card-header .gaccount__button { min-height: 39px; padding: 7px 12px; font-size: 12px; }
+    .gaccount__fields { grid-template-columns: 1fr; gap: 22px; }
+    .gaccount__field label, .gaccount__field legend { font-size: 14px; }
+    .gaccount__field label small, .gaccount__field legend small { font-size: 12px; }
+    .gaccount__field input, .gaccount__field select { height: 58px; border-radius: 16px; font-size: 16px; }
+    .gaccount__birth-fields { grid-template-columns: .8fr 1.1fr 1fr; gap: 8px; }
+    .gaccount__birth-fields select { padding-right: 12px; padding-left: 30px; font-size: 14px; }
+    .gaccount__profile-actions { gap: 10px; margin-top: 24px; }
+    .gaccount__profile-actions .gaccount__button { flex: 1; padding-inline: 15px; font-size: 14px; }
+    .gaccount__profile-actions .gaccount__button:not(.gaccount__button--primary) { min-width: 95px; font-size: 14px; }
+    .gaccount__phone-description, .gaccount__description { margin-bottom: 22px; font-size: 13px; }
+    .gaccount__phone-summary { gap: 10px; }
+    .gaccount__phone-number, .gaccount__phone-summary > strong { font-size: 22px; }
+    .gaccount__verified { padding-inline: 11px; font-size: 12px; }
+    .gaccount__notice { bottom: 18px; padding: 13px 18px; border-radius: 18px; font-size: 13px; }
+    .gaccount__dialog { border-radius: 28px; max-height: calc(100dvh - 30px); }
+    .gaccount__dialog-card { padding: 27px 23px 25px; }
+    .gaccount__dialog h2 { font-size: 21px; }
+    .gaccount__dialog-description { font-size: 14px; margin-bottom: 25px; }
+    .gaccount__dialog .gaccount__description { font-size: 14px; margin-bottom: 25px; }
+    .gaccount__dialog input[type="tel"] { height: 60px; font-size: 17px; }
+    .gaccount__dialog-actions .gaccount__button { min-height: 49px; padding-inline: 20px; font-size: 14px; }
+    .gaccount__dialog-actions .gaccount__button:not(.gaccount__button--primary) { min-height: 49px; min-width: 95px; font-size: 14px; }
+    .gaccount__otp { gap: 8px; }
+    .gaccount__otp input { flex: 1 1 0; width: 0; height: 62px; border-radius: 15px; font-size: 23px; }
+    .gaccount__otp-caption, .gaccount__code-description { font-size: 14px; }
+    .gaccount__phone-meta { gap: 9px; }
+    .gaccount__phone-meta button, .gaccount__phone-meta [data-phone-timer] { font-size: 12px; }
+    .gaccount__address-list { grid-template-columns: 1fr; gap: 16px; }
+    .gaccount__address, .gaccount__notification { padding: 20px; }
+    .gaccount__preferences { padding-top: 24px; padding-bottom: 20px; }
+    .gaccount__preferences .gaccount__card-header { margin-bottom: 19px; }
+    .gaccount__preferences-help { margin-bottom: 18px; font-size: 13px; }
+    .gaccount__preference { gap: 16px; min-height: 111px; padding: 20px 0; }
+    .gaccount__preference-copy > label { font-size: 15px; }
+    .gaccount__preference-copy > p { margin-top: 7px; font-size: 12px; line-height: 1.9; }
+    .gaccount__preference-copy > .gaccount__preference-feedback { font-size: 12px; }
+    .gaccount__preference-switch { flex-basis: 54px; width: 54px; height: 32px; }
+    .gaccount__preference-track::after { width: 26px; height: 26px; }
+    .gaccount__preference-switch > input:checked + .gaccount__preference-track::after { transform: translateX(-22px); }
+}
+@media (max-width: 360px) {
+    .gaccount__container { width: calc(100% - 28px); }
+    .gaccount__hero { gap: 12px; padding-inline: 17px; }
+    .gaccount__avatar--hero { width: 64px; height: 64px; }
+    .gaccount__stats { width: calc(100% + 76px); margin-right: -76px; }
+    .gaccount__card { padding-inline: 17px; }
+    .gaccount__card-header h2 { font-size: 17px; }
+    .gaccount__card-header .gaccount__button { font-size: 11px; padding-inline: 9px; }
+    .gaccount__hero-heading h2, .gaccount__hero-name { font-size: 20px; }
+    .gaccount__hero .gaccount__badge { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .gaccount *, .gaccount *::before, .gaccount *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

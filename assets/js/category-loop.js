@@ -1,217 +1,217 @@
-/* Slow, seamless looping for the homepage category rail only. */
+/* A compositor-driven loop; native scrolling takes over during interaction. */
 (function () {
     'use strict';
 
     var row = document.getElementById('genosys-category-row');
-    if (!row) return;
-
+    if (!row || typeof row.animate !== 'function') return;
     var originals = Array.prototype.slice.call(row.children);
     if (originals.length < 2) return;
 
+    var track = document.createElement('div');
+    track.className = 'genosys-categories__track';
+    track.setAttribute('data-category-track', '');
+    originals.forEach(function (card) { track.appendChild(card); });
+    row.appendChild(track);
+    row.classList.add('is-loop-ready');
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var speed = 8; // CSS pixels per second, independent of display refresh rate.
+    var cycleWidth = 0;
+    var copies = 0;
+    var measuredWidth = 0;
+    var animation = null;
+    var pointerId = null;
+    var touches = 0;
+    var keyboardNavigation = false;
+    var visible = !('IntersectionObserver' in window);
+    var resumeTimer = 0;
+    var resizeFrame = 0;
+    var pendingMeasure = false;
+    var ignoreScrollUntil = 0;
+
+    function modulo(value, width) { return ((value % width) + width) % width; }
+
+    function writeScroll(left) {
+        ignoreScrollUntil = performance.now() + 80;
+        row.scrollLeft = left;
+    }
+
+    function offset() {
+        if (!animation || !cycleWidth) return 0;
+        return modulo(Number(animation.currentTime) || 0, cycleWidth / speed * 1000) * speed / 1000;
+    }
+
+    function pause() {
+        clearTimeout(resumeTimer);
+        resumeTimer = 0;
+        if (!animation) return;
+        var left = row.scrollLeft - offset();
+        animation.cancel();
+        animation = null;
+        row.classList.remove('is-auto-scrolling');
+        // One handoff to native scrolling, never a scroll write on every frame.
+        writeScroll(left);
+    }
+
+    function canPlay() {
+        return cycleWidth && visible && !document.hidden && !reducedMotion.matches &&
+            pointerId === null && !touches &&
+            !(keyboardNavigation && row.contains(document.activeElement)) &&
+            !row.classList.contains('is-dragging') && !row.classList.contains('is-settling');
+    }
+
+    function play() {
+        resumeTimer = 0;
+        if (animation || !canPlay()) return;
+        if (pendingMeasure) {
+            measure();
+            if (pendingMeasure || animation || !canPlay()) return;
+        }
+        var previous = row.scrollLeft;
+        // Identical copies let us recenter only when the user has finished.
+        writeScroll(-copies * cycleWidth);
+        var phase = modulo(row.scrollLeft - previous, cycleWidth);
+        animation = track.animate([
+            { transform: 'translate3d(0, 0, 0)' },
+            { transform: 'translate3d(' + cycleWidth + 'px, 0, 0)' }
+        ], { duration: cycleWidth / speed * 1000, iterations: Infinity, easing: 'linear' });
+        animation.pause();
+        animation.currentTime = phase / speed * 1000;
+        row.classList.add('is-auto-scrolling');
+        animation.play();
+    }
+
+    function resume(delay) {
+        clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(play, delay === undefined ? 1000 : delay);
+    }
+
     function copyCard(card) {
         var copy = card.cloneNode(true);
+        copy.setAttribute('data-category-copy', '');
         copy.setAttribute('aria-hidden', 'true');
         copy.tabIndex = -1;
+        copy.removeAttribute('id');
+        copy.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
         return copy;
     }
 
-    var before = document.createDocumentFragment();
-    for (var first = 0; first < 2; first++) {
-        originals.forEach(function (card) { before.appendChild(copyCard(card)); });
-    }
-    row.insertBefore(before, row.firstChild);
-    for (var last = 0; last < 2; last++) {
-        originals.forEach(function (card) { row.appendChild(copyCard(card)); });
-    }
-
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var cycleWidth = 0;
-    var frame = 0;
-    var lastTime = 0;
-    var position = 0;
-    var moving = false;
-    var pointerId = null;
-    var resumeAt = 0;
-    var nativeActive = false;
-    var nativeSettling = false;
-    var nativeStart = 0;
-    var settleFrame = 0;
-    var speed = 12; // Pixels per second.
-
     function measure() {
-        var nextSet = row.children[originals.length * 3];
-        var width = originals[0].getBoundingClientRect().right - nextSet.getBoundingClientRect().right;
-        if (width <= 0) return;
-
-        var phase = cycleWidth ? (-row.scrollLeft - 2 * cycleWidth) / cycleWidth : 0;
-        phase = ((phase % 1) + 1) % 1;
-        cycleWidth = width;
-        row.classList.add('is-auto-scrolling');
-        getComputedStyle(row).scrollSnapType;
-        row.scrollLeft = -(2 + phase) * cycleWidth;
-        position = row.scrollLeft;
-        moving = false;
-        lastTime = 0;
-        if (reducedMotion.matches) row.classList.remove('is-auto-scrolling');
-    }
-
-    function centered(left) {
-        if (!cycleWidth) return left;
-        while (left > -2 * cycleWidth + .5) left -= cycleWidth;
-        while (left < -3 * cycleWidth - .5) left += cycleWidth;
-        return left;
-    }
-
-    function wrap() {
-        position = centered(row.scrollLeft);
-        if (Math.abs(position - row.scrollLeft) > .5) row.scrollLeft = position;
-    }
-
-    function stop() {
-        cancelAnimationFrame(frame);
-        frame = 0;
-        lastTime = 0;
-        moving = false;
-    }
-
-    function finishNative() {
-        nativeSettling = false;
-        nativeActive = false;
-        settleFrame = 0;
-        wrap();
-        lastTime = 0;
-        moving = false;
-    }
-
-    function settleNative() {
-        var bounds = row.getBoundingClientRect();
-        var styles = getComputedStyle(row);
-        var edge = bounds.right - parseFloat(styles.scrollPaddingRight || 0);
-        var start = row.scrollLeft;
-        var target = start;
-        var distance = Infinity;
-
-        Array.prototype.forEach.call(row.children, function (card) {
-            var aligned = start + card.getBoundingClientRect().right - edge;
-            if (Math.abs(aligned - start) < distance) {
-                target = aligned;
-                distance = Math.abs(aligned - start);
-            }
-        });
-        if (distance < .5) {
-            finishNative();
+        resizeFrame = 0;
+        if (pointerId !== null || touches || row.classList.contains('is-dragging') || row.classList.contains('is-settling')) {
+            pendingMeasure = true;
             return;
         }
-
-        nativeSettling = true;
-        var started = performance.now();
-        function settle(time) {
-            var progress = Math.min(1, (time - started) / 300);
-            row.scrollLeft = start + (target - start) * (1 - Math.pow(1 - progress, 3));
-            if (progress < 1) settleFrame = requestAnimationFrame(settle);
-            else {
-                row.scrollLeft = target;
-                finishNative();
+        var first = originals[0].getBoundingClientRect();
+        var last = originals[originals.length - 1].getBoundingClientRect();
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        var width = first.right - last.right + last.width + gap;
+        var viewportWidth = row.clientWidth;
+        if (width <= 0 || !viewportWidth) return;
+        pendingMeasure = false;
+        if (Math.abs(width - cycleWidth) < .01 && viewportWidth === measuredWidth) return;
+        var phase = cycleWidth ? modulo(-row.scrollLeft + offset(), cycleWidth) / cycleWidth : 0;
+        pause();
+        cycleWidth = width;
+        measuredWidth = viewportWidth;
+        var needed = Math.ceil(viewportWidth / cycleWidth) + 1;
+        if (copies !== needed) {
+            track.querySelectorAll('[data-category-copy]').forEach(function (card) { card.remove(); });
+            var before = document.createDocumentFragment();
+            var after = document.createDocumentFragment();
+            for (var set = 0; set < needed; set++) {
+                originals.forEach(function (card) { before.appendChild(copyCard(card)); after.appendChild(copyCard(card)); });
             }
+            track.insertBefore(before, track.firstChild);
+            track.appendChild(after);
+            copies = needed;
         }
-        settleFrame = requestAnimationFrame(settle);
+        writeScroll(-(copies + phase) * cycleWidth);
+        resume(0);
     }
 
-    function tick(time) {
-        frame = 0;
-        if (document.hidden || reducedMotion.matches) return;
-
-        if (nativeActive && !nativeSettling && pointerId === null && time >= resumeAt &&
-            !row.classList.contains('is-dragging') && !row.classList.contains('is-settling')) {
-            if (Math.abs(row.scrollLeft - nativeStart) < 1) {
-                nativeActive = false;
-                lastTime = 0;
-            } else {
-                settleNative();
-            }
-        }
-        var busy = pointerId !== null || nativeActive || nativeSettling || time < resumeAt ||
-            row.classList.contains('is-dragging') || row.classList.contains('is-settling');
-        if (!busy && cycleWidth) {
-            row.classList.add('is-auto-scrolling');
-            if (!moving) {
-                wrap();
-                moving = true;
-            }
-            if (lastTime) position = centered(position - speed * Math.min(50, time - lastTime) / 1000);
-            row.scrollLeft = position;
-        } else {
-            moving = false;
-        }
-        lastTime = time;
-        frame = requestAnimationFrame(tick);
+    function queueMeasure() {
+        if (!resizeFrame) resizeFrame = requestAnimationFrame(measure);
     }
 
-    function start() {
-        if (!frame && !document.hidden && !reducedMotion.matches) {
-            lastTime = 0;
-            frame = requestAnimationFrame(tick);
-        }
-    }
-
-    function pauseNative() {
-        if (reducedMotion.matches) return;
-        cancelAnimationFrame(settleFrame);
-        settleFrame = 0;
-        nativeSettling = false;
-        if (!nativeActive) nativeStart = row.scrollLeft;
-        nativeActive = true;
-        moving = false;
-        resumeAt = performance.now() + 500;
-    }
-
+    document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Tab' || event.altKey || event.ctrlKey || event.metaKey) return;
+        keyboardNavigation = true;
+        if (row.contains(document.activeElement)) pause();
+    }, true);
+    document.addEventListener('pointerdown', function () {
+        keyboardNavigation = false;
+        if (row.contains(document.activeElement)) resume();
+    }, true);
+    // Capture before the shared mouse-drag helper records its starting position.
     row.addEventListener('pointerdown', function (event) {
+        if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+        pause();
         pointerId = event.pointerId;
-        if (event.pointerType !== 'mouse') pauseNative();
-    });
+    }, true);
     function endPointer(event) {
         if (event.pointerId !== pointerId) return;
         pointerId = null;
-        resumeAt = performance.now() + (nativeActive ? 500 : 100);
+        resume();
     }
     window.addEventListener('pointerup', endPointer);
     window.addEventListener('pointercancel', endPointer);
-    window.addEventListener('blur', function () {
-        pointerId = null;
-        resumeAt = performance.now() + (nativeActive ? 500 : 100);
-    });
+    row.addEventListener('lostpointercapture', endPointer);
+    window.addEventListener('pointermove', function (event) {
+        if (event.pointerType === 'mouse' && event.pointerId === pointerId && !(event.buttons & 1)) endPointer(event);
+    }, { passive: true });
+    row.addEventListener('touchstart', function (event) {
+        touches = event.touches.length;
+        pause();
+    }, { passive: true });
+    function endTouch(event) {
+        touches = event.touches.length;
+        if (!touches) resume();
+    }
+    row.addEventListener('touchend', endTouch, { passive: true });
+    row.addEventListener('touchcancel', endTouch, { passive: true });
     row.addEventListener('wheel', function (event) {
-        if (event.deltaX || event.shiftKey) pauseNative();
+        if (!event.deltaX && !event.shiftKey) return;
+        pause();
+        resume();
+    }, { passive: true });
+    row.addEventListener('scroll', function () {
+        if (animation || performance.now() < ignoreScrollUntil) return;
+        // Wait for native touch/trackpad momentum instead of adding another snap.
+        resume();
     }, { passive: true });
     row.addEventListener('keydown', function (event) {
-        if (/^(ArrowLeft|ArrowRight|Home|End|PageUp|PageDown| )$/.test(event.key)) pauseNative();
-    });
-    row.addEventListener('scroll', function () {
-        if (nativeActive && !nativeSettling) {
-            resumeAt = performance.now() + 500;
+        if (/^(ArrowLeft|ArrowRight|Home|End|PageUp|PageDown| )$/.test(event.key)) {
+            keyboardNavigation = true;
+            pause();
+            resume();
         }
-    }, { passive: true });
-
-    window.addEventListener('resize', measure);
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) stop();
-        else start();
+    }, true);
+    row.addEventListener('focusin', function () { if (keyboardNavigation) pause(); });
+    row.addEventListener('focusout', function () {
+        window.setTimeout(function () {
+            if (!row.contains(document.activeElement)) resume();
+        }, 0);
     });
-    function motionChanged() {
-        if (reducedMotion.matches) {
-            stop();
-            cancelAnimationFrame(settleFrame);
-            nativeActive = false;
-            nativeSettling = false;
-            row.classList.remove('is-auto-scrolling');
-        } else {
-            row.classList.add('is-auto-scrolling');
-            start();
-        }
-    }
+    window.addEventListener('blur', function () { pointerId = null; touches = 0; pause(); });
+    window.addEventListener('focus', function () { resume(); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else resume(250); });
+    function motionChanged() { if (reducedMotion.matches) pause(); else resume(250); }
     if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', motionChanged);
     else reducedMotion.addListener(motionChanged);
-
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            if (visible) {
+                originals.forEach(function (card) {
+                    card.querySelectorAll('img').forEach(function (img) { img.loading = 'eager'; });
+                });
+                resume(150);
+            } else pause();
+        }, { rootMargin: '120px 0px' }).observe(row);
+    }
+    if ('ResizeObserver' in window) new ResizeObserver(queueMeasure).observe(row);
+    window.addEventListener('resize', queueMeasure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueMeasure);
     measure();
-    start();
 }());

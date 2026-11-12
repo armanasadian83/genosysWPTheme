@@ -9,7 +9,7 @@ function genosys_latest_products() {
     // Query product objects through WooCommerce's data store; never duplicate catalog data.
     $query = array(
         'status' => 'publish',
-        'limit' => 8,
+        'limit' => max( 1, min( 24, (int) genosys_site_setting( 'latest_count', 8 ) ) ),
         'orderby' => 'date',
         'order' => 'DESC',
         'return' => 'objects',
@@ -24,7 +24,7 @@ function genosys_latest_products() {
 function genosys_product_discount( $product ) {
     if ( ! $product->is_on_sale() ) { return 0; }
     // A variable/grouped product can have different discounts: show a truthful sale label.
-    if ( ! $product->is_type( array( 'simple', 'external' ) ) ) { return 0; }
+    if ( ! $product->is_type( array( 'simple', 'external', 'genosys_package' ) ) ) { return 0; }
     $regular = (float) $product->get_regular_price();
     $current = (float) $product->get_price();
     return $regular > 0 && $current < $regular ? (int) round( 100 * ( $regular - $current ) / $regular ) : 0;

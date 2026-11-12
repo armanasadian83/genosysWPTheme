@@ -1,0 +1,163 @@
+/* Decorative purchase feedback must not change header or mobile-menu layout. */
+
+body.single-product .single_add_to_cart_button[aria-disabled='true'] { cursor: progress; }
+body.single-product .gca-inline-feedback { margin-top: 16px; }
+
+.genosys-add-animation {
+    position: fixed;
+    inset: 0;
+    z-index: 99990;
+    overflow: hidden;
+    pointer-events: none;
+    direction: rtl;
+}
+
+.genosys-add-animation .gca-veil {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, .62);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 240ms ease;
+}
+
+.genosys-add-animation.is-active .gca-veil { opacity: 1; }
+
+.genosys-add-animation .gca-basket {
+    position: absolute;
+    width: 200px;
+    height: 170px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    will-change: transform, opacity;
+    isolation: isolate;
+}
+
+.genosys-add-animation .gca-basket-back,
+.genosys-add-animation .gca-basket-front,
+.genosys-add-animation .gca-flap {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+}
+
+.genosys-add-animation .gca-basket-back { z-index: 1; }
+
+.genosys-add-animation .gca-product {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    max-width: none;
+    object-fit: contain;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 8px 12px rgba(49, 18, 27, .17));
+}
+
+.genosys-add-animation .gca-product img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.genosys-add-animation .gca-basket-front {
+    z-index: 3;
+    filter: drop-shadow(0 14px 14px rgba(57, 9, 25, .19));
+}
+
+.genosys-add-animation .gca-flap {
+    z-index: 4;
+    top: 26px;
+    width: 50%;
+    height: 50px;
+    will-change: transform;
+    transition: transform 250ms cubic-bezier(.2, .85, .25, 1);
+}
+
+.genosys-add-animation .gca-flap--left {
+    left: 0;
+    transform-origin: 24px 42px;
+    transform: rotate(-72deg);
+}
+
+.genosys-add-animation .gca-flap--right {
+    right: 0;
+    transform-origin: 76px 42px;
+    transform: rotate(72deg);
+}
+
+.genosys-add-animation .gca-basket.is-closed .gca-flap { transform: rotate(0); }
+
+.genosys-add-animation .gca-toast {
+    position: fixed;
+    right: auto;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    min-height: 56px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 16px;
+    background: #26292e;
+    color: #fff;
+    font: 600 14px/1.6 Vazirmatn, Tahoma, Arial, sans-serif;
+    box-shadow: 0 14px 32px rgba(24, 26, 31, .25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 16px);
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
+    pointer-events: none;
+}
+
+.genosys-add-animation .gca-toast.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.genosys-add-animation .gca-toast a {
+    flex: 0 0 auto;
+    color: #ffc6d3;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.genosys-add-animation .gca-toast-message { min-width: 0; overflow-wrap: anywhere; }
+
+.genosys-add-animation .gca-toast a:hover,
+.genosys-add-animation .gca-toast a:focus-visible { color: #fff; text-decoration: underline; }
+
+body.single-product .nav-count-badge.gca-badge-pop {
+    animation: gca-badge-pop 350ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes gca-badge-pop {
+    0% { transform: scale(.5); }
+    45% { transform: scale(1.45); }
+    72% { transform: scale(.92); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+    .genosys-add-animation .gca-toast { gap: 12px; padding: 12px 16px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genosys-add-animation .gca-veil,
+    .genosys-add-animation .gca-flap,
+    .genosys-add-animation .gca-toast { transition: none; }
+    body.single-product .nav-count-badge.gca-badge-pop { animation: none; }
+}

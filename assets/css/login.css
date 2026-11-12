@@ -1,0 +1,212 @@
+/* The standalone, visual-only login page. */
+.genosys-login {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 48px 20px;
+    overflow: hidden;
+    color: #17191e;
+    background:
+        radial-gradient(ellipse 80% 80% at 12% 100%, #af1737 0%, #d23455 46%, #e78598 73%, transparent 100%),
+        linear-gradient(130deg, #fffbfb 1%, #fbdfe3 57%, #f4b8c3 100%);
+}
+.genosys-login__background {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+}
+.genosys-login__background svg { display: block; width: 100%; height: 100%; }
+.genosys-login__card {
+    position: relative;
+    width: min(100%, 638px);
+    min-height: 548px;
+    padding: 47px 53px 36px;
+    display: flex;
+    flex-direction: column;
+    border: 6px solid #f8e6e8;
+    border-radius: 43px;
+    background: #fff;
+    box-shadow: 0 24px 36px #53252d28, 0 4px 25px #b3697720;
+}
+.genosys-login__header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 79px;
+    text-align: right;
+}
+.genosys-login__mark { flex: 0 0 76px; width: 76px; height: 76px; filter: drop-shadow(0 11px 13px #c8103b1c); }
+.genosys-login__header h1 {
+    margin: 0;
+    color: #15171b;
+    font-size: 28px;
+    line-height: 1.45;
+    font-weight: 800;
+    white-space: nowrap;
+}
+.genosys-login__header p { margin: 0; color: #918b8c; font-size: 15px; line-height: 1.7; }
+.genosys-login__form { margin-top: 29px; margin-bottom: 30px; }
+.genosys-login__lead { margin: 0 0 31px; color: #807b7d; font-size: 16px; line-height: 1.9; }
+.genosys-login__field label { display: block; margin-bottom: 11px; color: #10151d; font-size: 16px; font-weight: 500; }
+.genosys-login__phone-wrap { position: relative; }
+.genosys-login__phone-wrap svg {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 23px;
+    width: 20px;
+    height: 20px;
+    color: #777;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.genosys-login__phone-wrap input {
+    display: block;
+    width: 100%;
+    height: 68px;
+    padding: 0 62px 0 20px;
+    border: 1px solid #dedede;
+    border-radius: 23px;
+    outline: 0;
+    background: #fff;
+    color: #15171b;
+    font-size: 19px;
+    direction: ltr;
+    text-align: right;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.genosys-login__phone-wrap input::placeholder { color: #847e80; opacity: 1; }
+.genosys-login__phone-wrap input:focus { border-color: #c8103b; box-shadow: 0 0 0 5px #c8103b12; }
+.genosys-login__phone-wrap input[aria-invalid="true"] { border-color: #ed123e; }
+.genosys-login__error { margin: 8px 0 0; color: #ea0c37; font-size: 13px; line-height: 1.7; }
+.genosys-login__primary {
+    display: block;
+    width: 100%;
+    min-height: 65px;
+    margin-top: 25px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(105deg, #d00637, #a60c30);
+    box-shadow: 0 14px 17px #bb163c3d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.genosys-login__primary:hover { transform: translateY(-2px); box-shadow: 0 17px 20px #bb163c45; }
+.genosys-login__primary:active { transform: translateY(0); }
+.genosys-login__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 47px;
+    margin-top: auto;
+    padding-top: 23px;
+    border-top: 1px solid #e2e0df;
+    color: #777b82;
+    font: 14px/1.5 Arial, sans-serif;
+    direction: ltr;
+    white-space: nowrap;
+}
+.genosys-login__brand img { display: block; width: 86px; height: auto; }
+.genosys-login__form--code { margin-top: 31px; }
+.genosys-login__form--code .genosys-login__lead { margin-bottom: 29px; }
+.genosys-login__form--code .genosys-login__lead strong { color: #10151d; font-weight: 700; unicode-bidi: isolate; }
+.genosys-login__code-fields { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.genosys-login__code-fields input {
+    width: 100%;
+    height: 77px;
+    padding: 0;
+    border: 1px solid #dedede;
+    border-radius: 21px;
+    outline: none;
+    background: #fff;
+    color: #17191e;
+    font: 600 27px/1 Arial, sans-serif;
+    text-align: center;
+    direction: ltr;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.genosys-login__code-fields input:focus { border-color: #e10b3b; box-shadow: 0 0 0 5px #e10b3b16; }
+.genosys-login__code-fields.has-error input { border-color: #ed123e; }
+.genosys-login__code-error { text-align: center; }
+.genosys-login__code-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 17px; }
+.genosys-login__code-actions button { padding: 3px 0; border: 0; background: none; font-size: 15px; cursor: pointer; }
+.genosys-login__text-button { color: #d00637; }
+.genosys-login__resend { color: #777b82; }
+.genosys-login__resend:disabled { cursor: default; opacity: 1; }
+.genosys-login__resend:not(:disabled) { color: #d00637; }
+.genosys-login__resend span { display: inline-block; color: #10151d; font-weight: 700; }
+.genosys-login__form--code .genosys-login__primary { margin-top: 29px; }
+.genosys-login__form--profile { margin-top: 27px; }
+.genosys-login__form--profile .genosys-login__lead { margin-bottom: 24px; }
+.genosys-login__form--profile .genosys-login__field + .genosys-login__field { margin-top: 25px; }
+.genosys-login__optional { color: #898487; font-weight: 400; }
+.genosys-login__input-wrap { position: relative; }
+.genosys-login__input-wrap svg {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 23px;
+    width: 20px;
+    height: 20px;
+    color: #777;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.genosys-login__input-wrap input {
+    display: block;
+    width: 100%;
+    height: 68px;
+    padding: 0 62px 0 20px;
+    border: 1px solid #dedede;
+    border-radius: 23px;
+    outline: 0;
+    background: #fff;
+    color: #15171b;
+    font-size: 19px;
+    direction: rtl;
+    text-align: right;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.genosys-login__input-wrap input[type="email"] { direction: ltr; }
+.genosys-login__input-wrap input::placeholder { color: #847e80; opacity: 1; }
+.genosys-login__input-wrap input:focus { border-color: #c8103b; box-shadow: 0 0 0 5px #c8103b12; }
+.genosys-login__input-wrap input[aria-invalid="true"] { border-color: #ed123e; }
+.genosys-login__form--profile .genosys-login__field:has(input[aria-invalid="true"]) .genosys-login__input-wrap svg { color: #ed123e; }
+.genosys-login__profile-error { margin-top: 20px; }
+.genosys-login__form--profile .genosys-login__primary { margin-top: 31px; }
+.genosys-login__form--profile .genosys-login__primary:disabled { cursor: wait; opacity: .75; transform: none; }
+
+@media (max-width: 600px) {
+    .genosys-login { padding: 24px 15px; }
+    .genosys-login__card { min-height: 0; padding: 31px 24px 27px; border-width: 5px; border-radius: 31px; }
+    .genosys-login__header { gap: 13px; }
+    .genosys-login__mark { flex-basis: 58px; width: 58px; height: 58px; }
+    .genosys-login__header h1 { font-size: clamp(18px, 5vw, 25px); }
+    .genosys-login__header p { font-size: 13px; }
+    .genosys-login__form { margin-top: 26px; }
+    .genosys-login__lead { margin-bottom: 25px; font-size: 14px; }
+    .genosys-login__field label { font-size: 15px; }
+    .genosys-login__phone-wrap input { height: 61px; border-radius: 19px; font-size: 17px; }
+    .genosys-login__input-wrap input { height: 61px; border-radius: 19px; font-size: 17px; }
+    .genosys-login__primary { min-height: 59px; margin-top: 23px; font-size: 16px; }
+    .genosys-login__brand { margin-top: 30px; padding-top: 19px; font-size: 12px; }
+    .genosys-login__brand img { width: 73px; }
+    .genosys-login__code-fields { gap: 7px; }
+    .genosys-login__code-fields input { height: clamp(49px, 13vw, 70px); border-radius: 14px; font-size: 23px; }
+    .genosys-login__code-actions button { font-size: 13px; }
+}
+@media (max-width: 370px) {
+    .genosys-login__card { padding-inline: 18px; }
+    .genosys-login__header h1 { font-size: 18px; }
+    .genosys-login__code-fields { gap: 5px; }
+    .genosys-login__code-fields input { border-radius: 12px; }
+}

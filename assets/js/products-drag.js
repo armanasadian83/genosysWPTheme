@@ -2,9 +2,19 @@
 (function () {
     'use strict';
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    document.querySelectorAll('.latest-products__row').forEach(function (row) {
+    var mobileRail = window.matchMedia('(max-width: 820px)');
+    document.querySelectorAll('.latest-products__row, [data-featured-rail]').forEach(function (row) {
         var gesture = null, frame = 0, suppressClick = false;
         var rtl = getComputedStyle(row).direction === 'rtl';
+
+        function enabled() {
+            return !row.hasAttribute('data-featured-rail') || mobileRail.matches;
+        }
+
+        function cards() {
+            var track = row.querySelector('[data-category-track]');
+            return track ? track.children : row.children;
+        }
 
         function clamp(left) {
             var extent = Math.max(0, row.scrollWidth - row.clientWidth);
@@ -21,7 +31,7 @@
             var bounds = row.getBoundingClientRect(), styles = getComputedStyle(row);
             var edge = rtl ? bounds.right - parseFloat(styles.scrollPaddingRight || 0) : bounds.left + parseFloat(styles.scrollPaddingLeft || 0);
             var target = clamp(projected), distance = Infinity;
-            Array.prototype.forEach.call(row.children, function (card) {
+            Array.prototype.forEach.call(cards(), function (card) {
                 var cardBounds = card.getBoundingClientRect();
                 var left = clamp(row.scrollLeft + (rtl ? cardBounds.right : cardBounds.left) - edge);
                 if (Math.abs(left - projected) < distance) {
@@ -44,6 +54,7 @@
         }
 
         row.addEventListener('pointerdown', function (event) {
+            if (!enabled()) return;
             suppressClick = false;
             stopMotion();
             if (event.pointerType !== 'mouse' || event.button !== 0) return;
@@ -85,7 +96,8 @@
 
             // A small, capped throw biases the next snap; never coast through many cards.
             var recent = performance.now() - completed.sampleTime < 80;
-            var limit = row.children.length ? row.children[0].getBoundingClientRect().width * .22 : 0;
+            var items = cards();
+            var limit = items.length ? items[0].getBoundingClientRect().width * .22 : 0;
             var throwDistance = !reducedMotion.matches && recent && event.type === 'pointerup' ? Math.max(-limit, Math.min(limit, completed.velocity * 85)) : 0;
             var target = nearestCard(clamp(completed.target + throwDistance));
             var start = row.scrollLeft, difference = target - start;
@@ -116,7 +128,7 @@
         });
         row.addEventListener('wheel', stopMotion, { passive: true });
         row.addEventListener('keydown', stopMotion);
-        row.addEventListener('dragstart', function (event) { event.preventDefault(); });
+        row.addEventListener('dragstart', function (event) { if (enabled()) event.preventDefault(); });
         row.addEventListener('click', function (event) {
             if (!suppressClick || event.detail === 0) return;
             suppressClick = false;

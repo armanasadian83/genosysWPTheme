@@ -3,6 +3,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/** Change only the related-products row size; WooCommerce still selects its products. */
+function genosys_single_product_related_count( $args ) {
+	$args['posts_per_page'] = max( 1, min( 12, (int) genosys_site_setting( 'product_related_count', 4 ) ) );
+	return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'genosys_single_product_related_count', 99 );
+
 /**
  * Keep WooCommerce's native product template lifecycle, cart forms and tabs.
  * Change presentation hooks only on actual single-product requests.

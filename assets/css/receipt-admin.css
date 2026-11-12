@@ -1,0 +1,331 @@
+/* Payment receipt dashboard only; WordPress navigation and other admin pages stay native. */
+@font-face {
+    font-family: "Genosys Receipts";
+    src: url("../fonts/Vazirmatn-Variable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body.toplevel_page_genosys-payment-receipts {
+    background: #f6f6f6;
+    font-family: "Genosys Receipts", Tahoma, Arial, sans-serif;
+}
+body.toplevel_page_genosys-payment-receipts #toplevel_page_genosys-payment-receipts.current > a.menu-top,
+body.toplevel_page_genosys-payment-receipts #toplevel_page_genosys-payment-receipts.wp-has-current-submenu > a.menu-top {
+    background: #d10a30;
+    color: #fff;
+}
+body.toplevel_page_genosys-payment-receipts #toplevel_page_genosys-payment-receipts.current > a.menu-top .wp-menu-image::before,
+body.toplevel_page_genosys-payment-receipts #toplevel_page_genosys-payment-receipts.wp-has-current-submenu > a.menu-top .wp-menu-image::before {
+    color: #fff;
+}
+.genosys-receipts {
+    --receipt-red: #d10a30;
+    --receipt-red-deep: #aa0828;
+    --receipt-ink: #202326;
+    --receipt-muted: #7b828c;
+    --receipt-line: #e6e7e9;
+    margin: 16px 26px 40px 48px;
+    max-width: 1880px;
+    direction: rtl;
+    color: var(--receipt-ink);
+    font-family: "Genosys Receipts", Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.genosys-receipts *,
+.genosys-receipts *::before,
+.genosys-receipts *::after { box-sizing: border-box; }
+.genosys-receipts button,
+.genosys-receipts input,
+.genosys-receipts select,
+.genosys-receipts textarea { font-family: inherit; }
+.genosys-receipts svg { display: block; width: 20px; height: 20px; flex-shrink: 0; }
+.genosys-receipts a { color: var(--receipt-red); text-decoration: none; }
+.genosys-receipts a:hover { color: var(--receipt-red-deep); }
+.genosys-receipts .description,
+.genosys-receipts__muted { margin: 6px 0 0; color: var(--receipt-muted); font-size: 12px; line-height: 1.8; }
+.genosys-receipts [hidden] { display: none !important; }
+
+.genosys-receipts__topbar {
+    display: grid;
+    grid-template-columns: minmax(175px, 1fr) minmax(240px, 460px) minmax(210px, 1fr);
+    grid-template-areas: "identity search brand";
+    align-items: center;
+    gap: 30px;
+    min-height: 96px;
+    padding: 17px 22px;
+    border: 1px solid #f0f0f1;
+    border-radius: 14px;
+    background: #fff;
+}
+.genosys-receipts__brand {
+    grid-area: brand;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 0;
+    direction: ltr;
+    text-align: left;
+}
+.genosys-receipts__brand img { display: block; width: 215px; max-width: 100%; height: auto; max-height: 54px; object-fit: contain; }
+.genosys-receipts__brand span,
+.genosys-receipts__brand small { display: block; margin-top: 6px; color: #697079; font-size: 8px; line-height: 1.5; letter-spacing: 1.3px; }
+.genosys-receipts__identity { grid-area: identity; display: flex; align-items: center; justify-content: flex-start; gap: 12px; min-width: 0; }
+.genosys-receipts__avatar { display: grid; place-items: center; flex: 0 0 46px; width: 46px; height: 46px; overflow: hidden; border: 1px solid #e8e8e9; border-radius: 50%; background: #f0f0f1; color: #9ca0a7; }
+.genosys-receipts__avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.genosys-receipts__avatar svg { width: 29px; height: 29px; }
+.genosys-receipts__identity-text { display: grid; gap: 1px; min-width: 0; }
+.genosys-receipts__identity-text strong { color: var(--receipt-ink); font-size: 14px; font-weight: 700; overflow-wrap: anywhere; }
+.genosys-receipts__identity-text span,
+.genosys-receipts__identity-text small { color: var(--receipt-muted); font-size: 12px; }
+.genosys-receipts__topbar > .genosys-receipts__search,
+.genosys-receipts__topbar-search { grid-area: search; width: 100%; margin: 0; }
+.genosys-receipts__topbar .genosys-receipts__search-field { flex: 1; min-width: 0; min-height: 50px; border-color: transparent; background: #f4f4f5; }
+.genosys-receipts__topbar .genosys-receipts__search-field input { background: transparent; font-size: 12px; }
+.genosys-receipts__topbar .genosys-receipts__search-button { min-height: 44px; padding-inline: 13px; }
+.genosys-receipts__topbar-submit { display: grid; place-items: center; flex: 0 0 32px; width: 32px; height: 40px; padding: 0; border: 0; border-radius: 7px; background: transparent; color: #626b76; cursor: pointer; }
+.genosys-receipts__topbar-submit:hover { background: #e9eaed; color: var(--receipt-red); }
+
+.genosys-receipts__hero { position: relative; display: flex; align-items: center; min-height: 218px; margin-bottom: 4px; overflow: hidden; }
+.genosys-receipts__hero-art { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; width: 58%; height: 100%; border: 0; object-fit: cover; object-position: left center; pointer-events: none; -webkit-mask-image: linear-gradient(to right, #000 72%, transparent); mask-image: linear-gradient(to right, #000 72%, transparent); }
+.genosys-receipts__hero-slogan { position: absolute; z-index: 1; top: 50%; left: 8px; margin: 0; transform: translateY(-50%); color: #5e6369; font-family: Arial, sans-serif; font-size: 17px; font-weight: 400; line-height: 2; letter-spacing: 6px; text-align: left; }
+.genosys-receipts__hero-copy { position: relative; z-index: 1; width: 64%; min-width: 0; padding: 24px 12px 20px 0; }
+.genosys-receipts .genosys-receipts__hero h1 { margin: 0 0 12px; padding: 0; color: #171a1d; font-family: inherit; font-size: clamp(29px, 2.35vw, 40px); line-height: 1.55; font-weight: 850; letter-spacing: -.8px; }
+.genosys-receipts__intro { margin: 0 0 20px; color: var(--receipt-muted); font-size: 16px; line-height: 1.9; }
+.genosys-receipts__help { display: inline-block; max-width: 100%; margin: 0; border: 0; border-radius: 12px; background: #fbe9eb; color: var(--receipt-red); font-family: inherit; font-size: 13px; font-weight: 650; line-height: 1.7; }
+.genosys-receipts__help:not(details),
+.genosys-receipts__help > summary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; margin: 0; padding: 11px 17px; border-radius: inherit; cursor: pointer; list-style: none; }
+.genosys-receipts__help > summary::-webkit-details-marker { display: none; }
+.genosys-receipts__help svg { width: 18px; height: 18px; }
+.genosys-receipts__help:hover { background: #f8dce1; color: var(--receipt-red-deep); }
+.genosys-receipts__help[open] { display: block; max-width: 560px; }
+.genosys-receipts__help[open] > summary { justify-content: flex-start; }
+.genosys-receipts__help > p,
+.genosys-receipts__help > div,
+.genosys-receipts__help > ul { margin: 0; padding: 0 17px 15px; color: #555c65; font-size: 12px; font-weight: 400; line-height: 1.9; }
+
+.genosys-receipts__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin: 0 0 24px; }
+.genosys-receipts__stat { min-width: 0; min-height: 120px; margin: 0; padding: 12px; border: 1px solid #fff; border-radius: 14px; background: #fff; }
+.genosys-receipts__stat-inner { display: grid; grid-template-columns: minmax(0, 1fr) 52px; grid-template-rows: auto auto; align-items: center; gap: 2px 16px; min-height: 94px; padding: 17px 20px; border-radius: 12px; background: #f1f4f7; color: #586371; }
+.genosys-receipts__stat-label { grid-column: 1; margin: 0; color: inherit; font-size: 16px; line-height: 1.6; }
+.genosys-receipts__stat-value { grid-column: 1; display: block; margin: 0; color: #1e242b; font-size: 28px; font-weight: 750; line-height: 1.35; }
+.genosys-receipts__stat-icon { grid-column: 2; grid-row: 1 / 3; display: grid; place-items: center; justify-self: end; width: 48px; height: 48px; color: #727c88; }
+.genosys-receipts__stat-icon svg { width: 39px; height: 39px; }
+.genosys-receipts__stat--approved .genosys-receipts__stat-inner { background: #edf8ef; color: #315e3c; }
+.genosys-receipts__stat--approved .genosys-receipts__stat-value { color: #193e28; }
+.genosys-receipts__stat--approved .genosys-receipts__stat-icon { color: #348a4d; }
+.genosys-receipts__stat--pending .genosys-receipts__stat-inner { background: #faf6f0; color: #6c5940; }
+.genosys-receipts__stat--pending .genosys-receipts__stat-value { color: #805523; }
+.genosys-receipts__stat--pending .genosys-receipts__stat-icon { color: #bf9a62; }
+.genosys-receipts__stat--rejected .genosys-receipts__stat-inner { background: #feeaed; color: #bc1635; }
+.genosys-receipts__stat--rejected .genosys-receipts__stat-value { color: #25282d; }
+.genosys-receipts__stat--rejected .genosys-receipts__stat-icon { color: var(--receipt-red); }
+
+.genosys-receipts__toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 0 0 24px; padding: 21px 22px; border: 1px solid #ededee; border-radius: 14px; background: #fff; }
+.genosys-receipts__toolbar-heading { min-width: 0; }
+.genosys-receipts__toolbar-heading strong,
+.genosys-receipts__toolbar-heading h2 { display: block; margin: 0; padding: 0; color: var(--receipt-ink); font-size: 15px; font-weight: 700; line-height: 1.8; }
+.genosys-receipts__toolbar-heading p { margin: 3px 0 0; color: var(--receipt-muted); font-size: 12px; line-height: 1.8; }
+.genosys-receipts__search { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; min-width: 0; margin: 0; }
+.genosys-receipts__search > label { color: #59616c; font-size: 13px; font-weight: 600; }
+.genosys-receipts__search-field { display: flex; align-items: center; gap: 10px; min-width: 220px; min-height: 48px; padding: 0 14px; border: 1px solid #dde0e5; border-radius: 10px; background: #fff; color: #626b76; }
+.genosys-receipts__search-field svg { width: 20px; height: 20px; }
+.genosys-receipts__search-field input[type="text"],
+.genosys-receipts__search-field input[type="search"],
+.genosys-receipts__search-field input[type="number"] { flex: 1; width: 100%; min-width: 0; min-height: 44px; margin: 0; padding: 4px 0; border: 0; border-radius: 0; outline: 0; background: transparent; box-shadow: none; color: var(--receipt-ink); font-size: 13px; line-height: 1.8; }
+.genosys-receipts__search-field input::placeholder { color: #9299a3; opacity: 1; }
+.genosys-receipts__search-field:focus-within { border-color: #dc8396; box-shadow: 0 0 0 3px #d10a300b; }
+.genosys-receipts .button,
+.genosys-receipts__search-button,
+.genosys-receipts__reset,
+.genosys-receipts__delete { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; margin: 0; padding: 5px 12px; border: 1px solid #e0e2e6; border-radius: 9px; background: #fff; box-shadow: none; color: #3f464e; font-size: 12px; font-weight: 500; line-height: 1.8; text-align: center; text-decoration: none; cursor: pointer; }
+.genosys-receipts .button:hover,
+.genosys-receipts__reset:hover { border-color: #cbd0d7; background: #f7f8f9; color: #202326; }
+.genosys-receipts .genosys-receipts__search-button { min-height: 48px; padding: 8px 23px; border-color: var(--receipt-red); border-radius: 10px; background: var(--receipt-red); color: #fff; font-size: 13px; font-weight: 650; }
+.genosys-receipts .genosys-receipts__search-button:hover { border-color: var(--receipt-red-deep); background: var(--receipt-red-deep); color: #fff; }
+.genosys-receipts__reset { min-height: 48px; padding-inline: 16px; }
+
+.genosys-receipts__table-wrap { position: relative; width: 100%; min-width: 0; overflow-x: auto; border: 1px solid var(--receipt-line); border-bottom: 0; border-radius: 14px 14px 0 0; background: #fff; scrollbar-width: thin; scrollbar-color: #d7dce1 #f5f6f7; }
+.genosys-receipts .genosys-receipts__table { width: 100%; min-width: 1300px; margin: 0; border: 0; border-spacing: 0; border-collapse: collapse; background: #fff; box-shadow: none; table-layout: auto; }
+.genosys-receipts__table th,
+.genosys-receipts__table td { padding: 22px 13px; border-bottom: 1px solid #edf0f2; color: #555e6a; text-align: right; vertical-align: top; font-family: inherit; font-size: 14px; line-height: 1.9; }
+.genosys-receipts__table thead th { height: 63px; padding-block: 18px; border-bottom-color: #e5e8eb; background: #fafafa; color: #535a64; font-size: 14px; font-weight: 650; white-space: nowrap; vertical-align: middle; }
+.genosys-receipts__table tbody tr { background: #fff; }
+.genosys-receipts__table tbody tr:hover { background: #fcfcfd; }
+.genosys-receipts__table th:first-child,
+.genosys-receipts__table td:first-child { padding-inline-start: 20px; }
+.genosys-receipts__table th:last-child,
+.genosys-receipts__table td:last-child { padding-inline-end: 20px; }
+.genosys-receipts__table tbody tr:last-child td { border-bottom: 0; }
+.genosys-receipts__order { min-width: 76px; }
+.genosys-receipts__order-link,
+.genosys-receipts__order > strong { display: inline-block; color: var(--receipt-red); font-size: 15px; font-weight: 750; line-height: 1.8; }
+.genosys-receipts__order-link:hover { color: var(--receipt-red-deep); text-decoration: underline; }
+.genosys-receipts__customer { min-width: 180px; max-width: 235px; overflow-wrap: anywhere; }
+.genosys-receipts__customer > strong { color: #30363f; font-size: 16px; font-weight: 650; }
+.genosys-receipts__customer p { margin: 5px 0 0; color: var(--receipt-muted); font-size: 14px; line-height: 1.8; text-align: right; }
+.genosys-receipts__details { min-width: 140px; max-width: 225px; }
+.genosys-receipts__details > strong { color: #3d454f; font-size: 14px; font-weight: 600; }
+.genosys-receipts__details-link,
+.genosys-receipts__order-detail-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: var(--receipt-red); font-size: 13px; font-weight: 600; }
+.genosys-receipts__details-link svg,
+.genosys-receipts__order-detail-link svg { width: 14px; height: 14px; }
+.genosys-receipts__table .genosys-receipts__amount { min-width: 100px; color: #525c69; text-align: center; font-size: 15px; }
+.genosys-receipts__amount .woocommerce-Price-currencySymbol { display: block; margin-top: 2px; color: var(--receipt-muted); font-size: 14px; font-weight: 400; }
+.genosys-receipts__table .genosys-receipts__payment { min-width: 110px; max-width: 160px; color: #353d47; text-align: center; font-size: 14px; }
+.genosys-receipts__payment p { margin: 4px 0 0; }
+.genosys-receipts__total { margin: 0; color: #46505c; font-size: 13px; font-weight: 600; line-height: 1.9; }
+.genosys-receipts__total > span { display: block; margin-bottom: 2px; color: var(--receipt-muted); font-size: 12px; font-weight: 400; }
+.genosys-receipts__total .woocommerce-Price-currencySymbol { font-weight: 400; }
+.genosys-receipts__status,
+.genosys-receipts__review-label { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 34px; margin: 0; padding: 6px 10px; border: 0; border-radius: 8px; background: #f0f2f5; color: #626b78; font-size: 13px; font-weight: 550; line-height: 1.7; white-space: nowrap; }
+.genosys-receipts__status--on-hold,
+.genosys-receipts__status--pending,
+.genosys-receipts__review-label--pending { background: #fff5df; color: #94701e; }
+.genosys-receipts__status--processing,
+.genosys-receipts__status--completed,
+.genosys-receipts__review-label--approved { background: #eaf6ed; color: #397348; }
+.genosys-receipts__status--failed,
+.genosys-receipts__status--cancelled,
+.genosys-receipts__review-label--rejected { background: #fcebef; color: #b22240; }
+.genosys-receipts__review { min-width: 145px; }
+.genosys-receipts__review-form { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 7px; width: 136px; margin: 9px 0 0; }
+.genosys-receipts__review-form select { width: 100%; min-width: 0; min-height: 34px; margin: 0; padding: 3px 9px 3px 24px; border: 1px solid #dfe3e7; border-radius: 8px; background-color: #fff; box-shadow: none; color: #5b626c; font-size: 12px; line-height: 1.7; }
+.genosys-receipts .genosys-receipts__review-save { min-height: 30px; padding: 3px 10px; border-color: #e8b9c3; background: #fff; color: var(--receipt-red); font-size: 12px; }
+.genosys-receipts .genosys-receipts__review-save:hover { border-color: #d8758a; background: #fff7f9; color: var(--receipt-red-deep); }
+.genosys-receipts__file { display: flex; flex-direction: column; align-items: center; gap: 7px; width: 115px; min-width: 105px; margin: 0 auto; text-align: center; }
+.genosys-receipts__preview,
+.genosys-receipts__document { position: relative; display: grid; place-items: center; flex: 0 0 auto; width: 84px; height: 84px; overflow: hidden; border: 1px solid #e0e3e7; border-radius: 10px; background: #f9f9fa; color: var(--receipt-red); }
+.genosys-receipts__preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.genosys-receipts__preview:hover { border-color: #d78598; background: #fff8fa; }
+.genosys-receipts__preview > svg,
+.genosys-receipts__preview .dashicons,
+.genosys-receipts__preview-zoom { position: absolute; bottom: 4px; left: 4px; display: grid; place-items: center; width: 24px; height: 24px; padding: 3px; border-radius: 6px; background: #eceff1; color: #3d454f; }
+.genosys-receipts__preview-zoom svg { width: 17px; height: 17px; }
+.genosys-receipts__document { background: #fff7f9; font-size: 17px; font-weight: 750; }
+.genosys-receipts__document svg { width: 38px; height: 38px; }
+.genosys-receipts__file-info { width: 100%; min-width: 0; }
+.genosys-receipts__filename { display: block; width: 100%; color: #3d454f; font-size: 12px; font-weight: 400; line-height: 1.7; overflow-wrap: anywhere; }
+.genosys-receipts__file-info .description { margin-top: 2px; font-size: 11px; }
+.genosys-receipts__actions { min-width: 128px; }
+.genosys-receipts__actions .button,
+.genosys-receipts__actions .genosys-receipts__delete { display: flex; width: 122px; min-height: 37px; margin: 0 auto 7px; padding: 5px 9px; border-radius: 9px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.genosys-receipts__actions .genosys-receipts__download,
+.genosys-receipts__actions .genosys-receipts__delete { border-color: #edc3cc; background: #fff; color: var(--receipt-red); }
+.genosys-receipts__actions .genosys-receipts__download:hover,
+.genosys-receipts__actions .genosys-receipts__delete:hover { border-color: #d78d9e; background: #fff6f8; color: var(--receipt-red-deep); }
+.genosys-receipts__delete-form { display: block; width: 122px; margin: 0 auto; }
+.genosys-receipts__actions .genosys-receipts__delete-form .genosys-receipts__delete { margin-bottom: 0; }
+.genosys-receipts .genosys-receipts__delete:disabled { border-color: #e1e4e8; background: #f5f6f7; color: #9299a2; cursor: not-allowed; opacity: .6; }
+.genosys-receipts__actions svg,
+.genosys-receipts__actions .dashicons { width: 16px; height: 16px; font-size: 16px; }
+.genosys-receipts__date { min-width: 116px; color: #687180; font-size: 14px; line-height: 1.8; white-space: nowrap; }
+.genosys-receipts__date time { display: block; }
+.genosys-receipts__date span { display: inline-block; margin-top: 5px; color: #8a919b; font-size: 13px; }
+.genosys-receipts__table .genosys-receipts__empty { height: 185px; padding: 48px 24px; color: var(--receipt-muted); text-align: center; vertical-align: middle; }
+.genosys-receipts__empty .dashicons { display: block; width: 38px; height: 38px; margin: 0 auto 12px; color: #c0a1aa; font-size: 38px; }
+.genosys-receipts__empty strong { color: #737b86; font-size: 14px; font-weight: 500; }
+
+.genosys-receipts__pagination { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-areas: "size pages range"; align-items: center; gap: 20px; min-height: 74px; margin: 0 0 20px; padding: 17px 22px; border: 1px solid var(--receipt-line); border-top: 1px solid #edf0f2; border-radius: 0 0 14px 14px; background: #fff; color: var(--receipt-muted); font-size: 12px; }
+.genosys-receipts__range { grid-area: range; margin: 0; text-align: left; }
+.genosys-receipts__page-links { grid-area: pages; }
+.genosys-receipts__page-links ul { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.genosys-receipts__page-links li { display: block; margin: 0; padding: 0; }
+.genosys-receipts__page-links a,
+.genosys-receipts__page-links span { display: grid; place-items: center; min-width: 39px; min-height: 39px; margin: 0; padding: 4px 10px; border: 1px solid #eff0f2; border-radius: 9px; background: #f5f6f7; color: #7a838f; font-size: 14px; line-height: 1.5; text-decoration: none; }
+.genosys-receipts__page-links .current { border-color: var(--receipt-red); background: var(--receipt-red); color: #fff; }
+.genosys-receipts__page-links a:hover { border-color: #deb1bc; background: #fff4f7; color: var(--receipt-red); }
+.genosys-receipts__page-links [aria-disabled="true"] { border-color: transparent; background: #f5f6f7; color: #a3a9b1; }
+.genosys-receipts__page-links svg { width: 15px; height: 15px; }
+.genosys-receipts__page-size { grid-area: size; display: flex; align-items: center; gap: 12px; margin: 0; color: var(--receipt-muted); }
+.genosys-receipts__page-size > strong,
+.genosys-receipts__page-size > span:last-child { display: inline-flex; align-items: center; justify-content: center; min-width: 71px; min-height: 40px; padding: 4px 13px; border: 1px solid #e0e3e7; border-radius: 9px; background: #fff; color: #5a626e; font-size: 13px; font-weight: 400; }
+@media (max-width: 1020px) { .genosys-receipts__hero-slogan { display: none; } }
+.genosys-receipts .notice { margin: 16px 0; padding: 2px 16px; border-radius: 8px; }
+.genosys-receipts .notice p { font-family: inherit; font-size: 13px; line-height: 1.8; }
+.genosys-receipts a:focus-visible,
+.genosys-receipts button:focus-visible,
+.genosys-receipts summary:focus-visible,
+.genosys-receipts select:focus-visible { outline: 2px solid var(--receipt-red); outline-offset: 3px; }
+.genosys-receipts__search-field input:focus-visible { outline: 0; box-shadow: none; }
+
+@media (max-width: 1250px) {
+    .genosys-receipts { margin-inline: 16px; }
+    .genosys-receipts__topbar { grid-template-columns: minmax(150px, 1fr) minmax(230px, 380px) minmax(175px, 1fr); gap: 20px; padding-inline: 18px; }
+    .genosys-receipts__brand img { width: 185px; }
+    .genosys-receipts__hero-copy { width: 69%; }
+    .genosys-receipts__intro { font-size: 14px; }
+    .genosys-receipts__stats { gap: 16px; }
+    .genosys-receipts__stat { padding: 10px; }
+    .genosys-receipts__stat-inner { grid-template-columns: minmax(0, 1fr) 38px; gap: 2px 10px; padding-inline: 15px; }
+    .genosys-receipts__stat-label { font-size: 12px; }
+    .genosys-receipts__stat-icon { width: 38px; height: 38px; }
+    .genosys-receipts__stat-icon svg { width: 32px; height: 32px; }
+    .genosys-receipts__toolbar { gap: 18px; padding-inline: 18px; }
+}
+@media (max-width: 1020px) {
+    .genosys-receipts__topbar { grid-template-columns: minmax(160px, 1fr) minmax(180px, 1fr); grid-template-areas: "identity brand" "search search"; gap: 18px; }
+    .genosys-receipts__topbar > .genosys-receipts__search,
+    .genosys-receipts__topbar-search { justify-content: stretch; }
+    .genosys-receipts__topbar .genosys-receipts__search-field { flex: 1; }
+    .genosys-receipts__hero-copy { width: 75%; }
+    .genosys-receipts__hero-art { width: 65%; opacity: .65; }
+    .genosys-receipts__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .genosys-receipts__stat-inner { grid-template-columns: minmax(0, 1fr) 48px; padding-inline: 19px; }
+    .genosys-receipts__stat-label { font-size: 14px; }
+    .genosys-receipts__stat-icon { width: 48px; height: 48px; }
+    .genosys-receipts__stat-icon svg { width: 38px; height: 38px; }
+    .genosys-receipts__toolbar { flex-direction: column; align-items: stretch; gap: 13px; }
+    .genosys-receipts__toolbar .genosys-receipts__search { width: 100%; }
+    .genosys-receipts__toolbar .genosys-receipts__search-field { flex: 1; }
+    .genosys-receipts__pagination { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "size range" "pages pages"; gap: 14px; }
+}
+@media (max-width: 782px) {
+    .genosys-receipts { margin: 14px 10px 32px 0; }
+    .genosys-receipts__topbar { padding: 18px; }
+    .genosys-receipts__hero { min-height: 205px; }
+    .genosys-receipts__hero-copy { width: 100%; padding-inline: 4px; }
+    .genosys-receipts .genosys-receipts__hero h1 { font-size: 29px; letter-spacing: -.5px; }
+    .genosys-receipts__hero-art { width: 85%; opacity: .25; }
+    .genosys-receipts__intro { max-width: 560px; font-size: 14px; }
+    .genosys-receipts__stats { gap: 12px; margin-bottom: 18px; }
+    .genosys-receipts__toolbar { padding: 18px; margin-bottom: 18px; }
+    .genosys-receipts__table th,
+    .genosys-receipts__table td { padding-inline: 12px; }
+    .genosys-receipts__pagination { padding-inline: 16px; }
+}
+@media (max-width: 520px) {
+    .genosys-receipts__topbar { grid-template-columns: minmax(0, 1fr); grid-template-areas: "brand" "identity" "search"; gap: 15px; }
+    .genosys-receipts__brand { align-items: center; text-align: center; }
+    .genosys-receipts__brand img { width: 205px; }
+    .genosys-receipts__identity { justify-content: center; }
+    .genosys-receipts__topbar .genosys-receipts__search { flex-wrap: wrap; gap: 8px; }
+    .genosys-receipts__topbar .genosys-receipts__search-field { flex: 1 0 100%; min-width: 0; }
+    .genosys-receipts__topbar .genosys-receipts__search-button { width: 100%; min-height: 42px; }
+    .genosys-receipts__hero { min-height: 245px; }
+    .genosys-receipts .genosys-receipts__hero h1 { font-size: 27px; line-height: 1.65; }
+    .genosys-receipts__intro { margin-bottom: 15px; font-size: 13px; }
+    .genosys-receipts__help:not(details),
+    .genosys-receipts__help > summary { min-height: 42px; font-size: 12px; }
+    .genosys-receipts__stats { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .genosys-receipts__stat { min-height: 108px; padding: 10px; }
+    .genosys-receipts__stat-inner { min-height: 86px; padding-block: 14px; }
+    .genosys-receipts__stat-value { font-size: 27px; }
+    .genosys-receipts__toolbar { padding: 16px; }
+    .genosys-receipts__toolbar-heading p { font-size: 11px; }
+    .genosys-receipts__toolbar .genosys-receipts__search { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .genosys-receipts__search-field { width: 100%; min-width: 0; }
+    .genosys-receipts__search-button,
+    .genosys-receipts__reset { width: 100%; }
+    .genosys-receipts__pagination { grid-template-columns: minmax(0, 1fr); grid-template-areas: "pages" "range" "size"; gap: 13px; padding-block: 16px; }
+    .genosys-receipts__range { text-align: center; }
+    .genosys-receipts__page-size { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .genosys-receipts *,
+    .genosys-receipts *::before,
+    .genosys-receipts *::after { scroll-behavior: auto; transition: none; }
+}

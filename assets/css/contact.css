@@ -1,0 +1,128 @@
+/* Contact page: local styles, shared theme header and footer remain intact. */
+.gs-contact{--contact-red:var(--accent,#cc0d36);--contact-deep:var(--deep,#a5072b);--contact-ink:#202025;--contact-muted:#85817e;--contact-border:#e4e2e1;color:var(--contact-ink);background:#fff;overflow:hidden;font-size:16px}
+.gs-contact button,.gs-contact input,.gs-contact textarea{font:inherit}
+.gs-contact a{color:inherit;text-decoration:none}
+.gs-contact-shell{width:min(1590px,calc(100% - 64px));margin-inline:auto}
+.gs-contact-hero{position:relative;padding:60px 0 46px;background:radial-gradient(ellipse at 92% -6%,#e8d9da 0,transparent 44%),radial-gradient(ellipse at 2% 0,#e8e8e7 0,transparent 42%),#f6f5f3;text-align:center;isolation:isolate}
+.gs-contact-hero>.gs-contact-shell{position:relative;z-index:1}
+.gs-contact-status{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:10px 16px;border:1px solid #e8e6e4;border-radius:99px;background:#fff;box-shadow:0 10px 20px #17151c14;font-size:15px;color:#555259}
+.gs-contact-status strong{font-weight:700;color:var(--contact-ink)}
+.gs-contact-status__dot{display:block;position:relative;width:13px;height:13px;flex:none;border-radius:50%;background:#88817d;margin-inline:4px}
+.gs-contact-status__dot:after{content:"";position:absolute;inset:-6px;border:2px solid currentColor;border-radius:50%;color:#a7a19b}
+.gs-contact-status.is-open .gs-contact-status__dot{background:#207f3d}
+.gs-contact-status.is-open .gs-contact-status__dot:after{color:#8cba9a}
+.gs-contact-status__detail{color:var(--contact-muted)}
+.gs-contact-status__detail:before{content:"·";margin-inline-end:10px}
+.gs-contact h1{margin:24px auto 25px;font-size:clamp(48px,5.8vw,104px);font-weight:900;line-height:1.4;letter-spacing:-2.5px}
+.gs-contact-highlight{position:relative;display:inline-block;color:var(--contact-red)}
+.gs-contact-highlight>svg{position:absolute;left:-2%;bottom:-9px;width:104%;height:26px;overflow:visible}
+.gs-contact-intro{color:var(--contact-muted);font-size:22px;line-height:1.95;max-width:880px;margin:0 auto 60px}
+.gs-contact-wave{position:absolute;left:3.5%;top:82px;width:270px;height:120px;z-index:0;filter:drop-shadow(12px 16px 20px #2321240c);transform:rotate(-2deg)}
+.gs-contact-disc{position:absolute;right:5.2%;top:34px;width:156px;height:156px;border-radius:50%;background:var(--contact-red);transform:rotate(.5deg);z-index:0}
+.gs-contact-disc:after{content:"";position:absolute;inset:50% 9px 8px;border-radius:0 0 100px 100px;background:#202025}
+.gs-contact-channels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1495px;margin:auto}
+.gs-contact-channel{padding:29px 28px 24px;text-align:right;border:1px solid var(--contact-border);border-radius:36px;background:#ffffffd9;box-shadow:0 26px 32px -30px #21212780;min-width:0}
+.gs-contact-channel--featured{border-color:#efb4c0;background:radial-gradient(ellipse at 100% 10%,#edcbd2 0,transparent 55%),#ffffffd9;box-shadow:inset -2px -2px 0 #fff,inset -3px -3px 0 var(--contact-red),0 28px 40px -32px #a90b36a0}
+.gs-contact-channel__icon{display:flex;align-items:center;justify-content:center;width:66px;height:66px;margin:0 0 16px;background:linear-gradient(125deg,var(--contact-red),var(--contact-deep));color:#fff;border-radius:24px;box-shadow:0 15px 22px -10px #c8103b70}
+.gs-contact-channel--featured .gs-contact-channel__icon{transform:rotate(-7deg)}
+.gs-contact-channel__icon svg{width:30px;height:30px}
+.gs-contact-channel h2{font-size:15px;line-height:1.8;font-weight:400;margin:0;color:var(--contact-muted)}
+.gs-contact-channel__value{font-size:21px;font-weight:750;margin:12px 0 26px;line-height:1.8;white-space:normal;overflow-wrap:anywhere;text-align:right;min-height:38px}
+.gs-contact-channel__value.is-empty{font-size:17px;font-weight:500;color:var(--contact-muted)}
+.gs-contact-channel__actions{display:flex;align-items:center;gap:10px}
+.gs-contact-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:9px 22px;background:linear-gradient(120deg,var(--contact-red),var(--contact-deep));border:1px solid transparent;border-radius:99px;color:#fff!important;font-weight:750;line-height:1.5;cursor:pointer;text-align:center;transition:box-shadow .18s,background-color .18s,transform .18s}
+.gs-contact-button:hover{box-shadow:0 8px 15px -8px #bb07365e;transform:translateY(-1px)}
+.gs-contact-button:disabled{cursor:default;opacity:.5;transform:none;box-shadow:none}
+.gs-contact-submit:disabled{cursor:wait}
+.gs-contact-channel__actions .gs-contact-button{flex:1;min-width:0;padding:10px 12px;font-size:15px}
+.gs-contact-button--outline{border-color:#e0dedd;background:#fff;color:var(--contact-ink)!important;font-weight:600}
+.gs-contact-button--outline:hover{border-color:var(--contact-red);color:var(--contact-red)!important}
+.gs-contact-main{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr);gap:30px;align-items:start;padding-top:62px;padding-bottom:60px}
+.gs-contact-form-card,.gs-contact-address{border:1px solid #e8e6e4;background:#fff;border-radius:42px;box-shadow:0 30px 42px -40px #212127b0}
+.gs-contact-form-card{padding:43px 46px 44px}
+.gs-contact-form-card header h2{font-size:34px;font-weight:850;line-height:1.6;margin:0 0 15px}
+.gs-contact-form-card header p{font-size:18px;color:var(--contact-muted);line-height:1.9;margin:0 0 34px}
+.gs-contact-form{display:grid;gap:22px;position:relative}
+.gs-contact-topics{border:0;padding:0;margin:0 0 8px;min-width:0}
+.gs-contact-topics legend{padding:0;margin:0 0 16px;font-weight:700}
+.gs-contact-topic-list{display:flex;flex-wrap:wrap;gap:10px;max-width:670px}
+.gs-contact-topic{position:relative;cursor:pointer}
+.gs-contact-topic input{position:absolute;opacity:0;width:1px;height:1px;inset:50% auto auto 50%}
+.gs-contact-topic>span{display:flex;align-items:center;justify-content:center;gap:9px;min-height:55px;padding:10px 23px;border:1px solid var(--contact-border);border-radius:99px;font-weight:500;line-height:1.6;transition:background-color .18s,color .18s,box-shadow .18s}
+.gs-contact-topic>span svg{display:none;width:18px;height:18px}
+.gs-contact-topic input:checked+span{border-color:transparent;background:linear-gradient(120deg,var(--contact-red),var(--contact-deep));color:#fff;font-weight:700;box-shadow:0 13px 18px -13px #aa0928a0}
+.gs-contact-topic input:checked+span svg{display:block}
+.gs-contact-topic input:focus-visible+span{outline:2px solid var(--contact-red);outline-offset:4px}
+.gs-contact-field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.gs-contact-field{min-width:0}
+.gs-contact-field input,.gs-contact-field textarea{display:block;width:100%;min-width:0;border:1px solid #dedcda;border-radius:24px;padding:20px 22px;background:#fff;color:var(--contact-ink);outline:0;font-size:18px;line-height:1.75;text-align:right;transition:border-color .18s,box-shadow .18s;box-shadow:none}
+.gs-contact-field input{height:76px}
+.gs-contact-field input::placeholder,.gs-contact-field textarea::placeholder{color:var(--contact-muted);opacity:1}
+.gs-contact-field input:focus,.gs-contact-field textarea:focus{border-color:var(--contact-red);box-shadow:0 0 0 5px #c8103b12}
+.gs-contact-field [aria-invalid="true"]{border-color:var(--contact-red)}
+.gs-contact-message-wrap{position:relative}
+.gs-contact-field textarea{height:226px;min-height:190px;resize:vertical;padding-bottom:45px}
+.gs-contact-counter{position:absolute;left:20px;bottom:12px;font-size:13px;color:var(--contact-muted);direction:ltr;pointer-events:none}
+.gs-contact-field-error{color:var(--contact-red);font-size:13px;line-height:1.8;margin:7px 4px 0}
+.gs-contact-attachment-wrap{position:relative}
+.gs-contact-attachment{position:relative;display:flex;align-items:center;gap:14px;min-height:65px;padding:15px 22px;border:1px dashed #ef8da4;border-radius:24px;background:#fbf8f8;cursor:pointer;color:var(--contact-muted);line-height:1.8;font-size:15px;overflow:hidden}
+.gs-contact-attachment>svg{width:27px;height:27px;flex:none;color:var(--contact-red)}
+.gs-contact-attachment strong{font-weight:650;color:var(--contact-ink)}
+.gs-contact-attachment>span{min-width:0;overflow-wrap:anywhere}
+.gs-contact-attachment input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.gs-contact-attachment:focus-within{outline:2px solid var(--contact-red);outline-offset:4px}
+.gs-contact-attachment-wrap.has-file .gs-contact-attachment{padding-left:58px}
+.gs-contact-file-remove{position:absolute;top:14px;left:14px;width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:var(--contact-red);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1}
+.gs-contact-file-remove svg{width:17px;height:17px}
+.gs-contact-form-actions{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:4px}
+.gs-contact-consent{flex:1;min-width:0;font-size:14px;color:var(--contact-muted)}
+.gs-contact-consent>label{display:flex;align-items:flex-start;gap:13px;cursor:pointer;line-height:2.1}
+.gs-contact-consent input{width:20px;height:20px;accent-color:var(--contact-red);flex:none;margin:5px 0 0}
+.gs-contact-consent a,.gs-contact-privacy-label{color:var(--contact-red)}
+.gs-contact-consent a:hover{text-decoration:underline}
+.gs-contact-submit{min-height:70px;min-width:240px;font-size:21px;padding:15px 30px;flex:none;box-shadow:0 20px 28px -20px #b10a3aa0}
+.gs-contact-submit svg{width:25px;height:25px}
+.gs-contact-form-status{font-size:15px;margin:0;padding:14px 18px;border-radius:18px;background:#faf0f3;color:var(--contact-red);border:1px solid #efd2da;line-height:1.9;outline:0}
+.gs-contact-form-status.is-success{background:#edf7ef;color:#267c41;border-color:#c3e0cb}
+.gs-contact-form-status:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.gs-contact-sidebar{min-width:0;display:grid;gap:22px}
+.gs-contact-hours{position:relative;isolation:isolate;overflow:hidden;border-radius:42px;padding:33px 35px 30px;background:linear-gradient(130deg,var(--contact-red),var(--contact-deep));color:#fff;box-shadow:0 33px 46px -25px #ad0b3d65}
+.gs-contact-hours:before{content:"";position:absolute;left:-170px;bottom:-180px;width:400px;height:400px;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0 19px,#fff3 20px 20.7px);pointer-events:none;z-index:-1}
+.gs-contact-hours:after{content:"";position:absolute;inset:20% 0 0;background:radial-gradient(ellipse at 14% 100%,#ffffff30,transparent 70%);z-index:-1;pointer-events:none}
+.gs-contact-hours h2{display:flex;align-items:center;gap:13px;font-size:23px;font-weight:800;margin:0 0 22px}
+.gs-contact-hours h2 svg{width:25px;height:25px;flex:none}
+.gs-contact-hours ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.gs-contact-hours li{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 14px;min-height:51px;border:1px solid transparent;border-radius:15px;color:#f4c7d0;font-weight:550;line-height:1.7}
+.gs-contact-hours li.is-today{background:#ffffff30;border-color:#ffffff55;color:#fff;font-weight:800}
+.gs-contact-address{padding:28px 30px 30px}
+.gs-contact-address-row{display:flex;align-items:flex-start;gap:18px;padding:17px 0 21px;border-bottom:1px dashed #e2dedb}
+.gs-contact-address-icon{display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:19px;background:#faedf0;color:var(--contact-red);flex:none}
+.gs-contact-address-icon svg{width:25px;height:25px}
+.gs-contact-address h2{font-size:15px;font-weight:400;color:var(--contact-muted);margin:0 0 8px}
+.gs-contact-address p{font-size:17px;font-weight:600;line-height:1.95;margin:0;overflow-wrap:anywhere}
+.gs-contact-postal{text-align:right}
+.gs-contact-socials{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:17px}
+.gs-contact-socials a{height:59px;display:flex;align-items:center;justify-content:center;border:1px solid #232329;background:#fff;transition:border-color .18s,color .18s,background-color .18s}
+.gs-contact-socials a:hover{border-color:var(--contact-red);color:var(--contact-red);background:#fff9fa}
+.gs-contact-socials svg{width:25px;height:25px}
+.gs-contact-faq{padding-top:22px;padding-bottom:90px;text-align:center}
+.gs-contact-faq header h2{font-size:52px;font-weight:900;line-height:1.7;margin:0 0 14px;letter-spacing:-.7px}
+.gs-contact-faq header h2>span{color:var(--contact-red)}
+.gs-contact-faq header>p{font-size:20px;color:var(--contact-muted);margin:0 0 44px}
+.gs-contact-faq-list{max-width:1080px;margin:auto;display:grid;gap:13px;text-align:right}
+.gs-contact-faq-item{border:1px solid #e6e4e2;border-radius:32px;background:#fff;box-shadow:0 14px 20px -22px #22222a;overflow:hidden;transition:border-color .18s,box-shadow .18s}
+.gs-contact-faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:88px;padding:20px 30px;cursor:pointer;font-size:19px;line-height:1.8;font-weight:800}
+.gs-contact-faq-item summary::-webkit-details-marker{display:none}
+.gs-contact-faq-item summary:focus-visible{outline:2px solid var(--contact-red);outline-offset:-6px;border-radius:30px}
+.gs-contact-faq-toggle{display:flex;align-items:center;justify-content:center;flex:none;width:43px;height:43px;border-radius:50%;background:#f4f3f1;color:var(--contact-red);font-size:25px;font-weight:700;line-height:1;transition:transform .2s,background .2s,color .2s}
+.gs-contact-faq-item[open]{border-color:#ec6c88;box-shadow:0 25px 32px -27px #a80636b0}
+.gs-contact-faq-item[open] .gs-contact-faq-toggle{background:var(--contact-red);color:#fff;transform:rotate(45deg)}
+.gs-contact-faq-answer{padding:0 30px 25px;color:var(--contact-muted);font-size:18px;line-height:2}
+.gs-contact-faq-answer p{margin:8px 0 0;overflow-wrap:anywhere}
+.gs-contact-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.gs-contact-honeypot{position:absolute!important;left:-10000px!important;top:auto;width:1px;height:1px;overflow:hidden}
+@media(min-width:1650px){.gs-contact-main{width:min(1540px,calc(100% - 100px))}.gs-contact-form-card{padding-inline:46px}.gs-contact-form-actions{gap:25px}}
+@media(max-width:1250px){.gs-contact-shell{width:calc(100% - 48px)}.gs-contact-wave{width:180px;top:85px;left:2%}.gs-contact-disc{width:112px;height:112px;top:36px;right:3%}.gs-contact h1{font-size:clamp(48px,6.3vw,88px)}.gs-contact-intro{font-size:20px}.gs-contact-channel{padding:25px 20px 22px;border-radius:30px}.gs-contact-channel__value{font-size:18px}.gs-contact-main{gap:22px;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.gs-contact-form-card{padding:32px 28px}.gs-contact-form-card header h2{font-size:29px}.gs-contact-form-card header p{font-size:16px}.gs-contact-topic>span{padding:10px 17px;font-size:14px;min-height:49px}.gs-contact-form-actions{flex-wrap:wrap}.gs-contact-submit{min-width:220px;min-height:62px;font-size:19px}.gs-contact-consent{flex-basis:100%}.gs-contact-form-actions .gs-contact-submit{margin-inline-start:auto}.gs-contact-hours{padding:27px 23px}.gs-contact-hours h2{font-size:21px}.gs-contact-address{padding:24px}.gs-contact-address p{font-size:15px}.gs-contact-socials{gap:9px}.gs-contact-faq header h2{font-size:44px}}
+@media(max-width:900px){.gs-contact-hero{padding-top:42px}.gs-contact h1{font-size:clamp(45px,7.3vw,64px);margin-top:23px;letter-spacing:-1.7px}.gs-contact-intro{max-width:680px;font-size:18px;margin-bottom:35px}.gs-contact-wave{width:120px;top:110px;left:-20px;opacity:.65}.gs-contact-disc{width:85px;height:85px;top:25px;right:17px;opacity:.85}.gs-contact-channels{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;max-width:740px}.gs-contact-channel{padding:25px}.gs-contact-channel__value{font-size:21px;margin-bottom:20px}.gs-contact-main{grid-template-columns:minmax(0,1fr);padding-top:40px;max-width:740px}.gs-contact-sidebar{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.gs-contact-hours{border-radius:32px;padding:25px 18px}.gs-contact-hours h2{font-size:18px;gap:8px}.gs-contact-hours li{font-size:14px;min-height:43px;padding:8px 9px;gap:8px}.gs-contact-address{border-radius:32px;padding:22px 17px}.gs-contact-address-row{gap:10px;padding:8px 0 17px}.gs-contact-address-icon{width:43px;height:43px;border-radius:15px}.gs-contact-address h2{font-size:13px}.gs-contact-address p{font-size:14px}.gs-contact-socials{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.gs-contact-socials a{height:48px}.gs-contact-faq{padding-top:10px;padding-bottom:65px}.gs-contact-faq header h2{font-size:38px}.gs-contact-faq header>p{font-size:17px;margin-bottom:30px}.gs-contact-faq-item summary{font-size:17px;padding:18px 24px}.gs-contact-faq-answer{font-size:16px;padding-inline:24px}}
+@media(max-width:540px){.gs-contact-shell{width:calc(100% - 32px)}.gs-contact-hero{padding:33px 0 31px}.gs-contact-status{gap:7px;padding:9px 12px;max-width:calc(100% - 26px);font-size:12px;line-height:1.8}.gs-contact-status__dot{width:9px;height:9px;margin-inline:3px}.gs-contact-status__dot:after{inset:-4px;border-width:1.5px}.gs-contact-status__detail:before{margin-inline-end:7px}.gs-contact h1{font-size:42px;letter-spacing:-1.5px;line-height:1.7;margin:26px auto 24px;max-width:365px}.gs-contact-highlight>svg{bottom:-5px;height:17px}.gs-contact-intro{font-size:15px;line-height:1.95;max-width:350px;margin-bottom:32px}.gs-contact-intro br{display:none}.gs-contact-wave{width:80px;top:100px;left:-31px;opacity:.5}.gs-contact-disc{width:52px;height:52px;top:84px;right:-15px;opacity:.6}.gs-contact-disc:after{inset:50% 4px 4px}.gs-contact-channels{gap:12px}.gs-contact-channel{padding:18px 14px 16px;border-radius:26px}.gs-contact-channel__icon{width:48px;height:48px;border-radius:17px;margin-bottom:12px}.gs-contact-channel__icon svg{width:24px;height:24px}.gs-contact-channel h2{font-size:13px}.gs-contact-channel__value{font-size:14px;line-height:1.8;min-height:49px;margin:8px 0 14px;display:flex;align-items:center;justify-content:flex-end}.gs-contact-channel__actions{gap:6px;flex-wrap:wrap}.gs-contact-channel__actions .gs-contact-button{font-size:12px;padding:8px 6px;min-height:38px;flex-basis:100%}.gs-contact-channel__actions .gs-contact-button--outline{min-height:34px}.gs-contact-main{padding-top:30px;padding-bottom:35px;gap:20px}.gs-contact-form-card{border-radius:30px;padding:27px 20px}.gs-contact-form-card header h2{font-size:25px;margin-bottom:9px}.gs-contact-form-card header p{font-size:14px;margin-bottom:25px}.gs-contact-form{gap:17px}.gs-contact-topics{margin-bottom:3px}.gs-contact-topics legend{font-size:14px;margin-bottom:12px}.gs-contact-topic-list{gap:8px}.gs-contact-topic>span{min-height:43px;font-size:12px;padding:9px 14px;gap:5px}.gs-contact-topic>span svg{width:15px;height:15px}.gs-contact-field-row{grid-template-columns:1fr;gap:17px}.gs-contact-field input{height:63px}.gs-contact-field input,.gs-contact-field textarea{border-radius:20px;font-size:15px;padding:16px 17px}.gs-contact-field textarea{height:195px;min-height:165px;padding-bottom:38px}.gs-contact-counter{font-size:11px;left:17px;bottom:11px}.gs-contact-attachment{min-height:65px;border-radius:20px;padding:12px 15px;font-size:12px;gap:9px}.gs-contact-attachment>svg{width:23px;height:23px}.gs-contact-attachment strong{display:block}.gs-contact-file-remove{top:17px;left:10px;width:30px;height:30px}.gs-contact-form-actions{gap:16px;margin-top:1px}.gs-contact-consent{font-size:12px}.gs-contact-consent>label{gap:9px;line-height:2}.gs-contact-consent input{width:18px;height:18px;margin-top:3px}.gs-contact-submit{width:100%;min-height:58px;min-width:0;font-size:18px}.gs-contact-sidebar{grid-template-columns:1fr;gap:18px}.gs-contact-hours{border-radius:30px;padding:26px 23px 22px}.gs-contact-hours h2{font-size:21px;margin-bottom:17px}.gs-contact-hours li{font-size:15px;min-height:46px;padding:9px 12px}.gs-contact-address{border-radius:30px;padding:22px 23px}.gs-contact-address-row{gap:14px;padding:10px 0 18px}.gs-contact-address-icon{width:48px;height:48px;border-radius:16px}.gs-contact-address h2{font-size:14px}.gs-contact-address p{font-size:15px}.gs-contact-socials{grid-template-columns:repeat(4,minmax(0,1fr))}.gs-contact-socials a{height:48px}.gs-contact-socials svg{width:22px;height:22px}.gs-contact-faq{padding-top:8px;padding-bottom:49px}.gs-contact-faq header h2{font-size:30px;letter-spacing:-.5px;margin-bottom:9px}.gs-contact-faq header>p{font-size:14px;margin-bottom:25px}.gs-contact-faq-list{gap:11px}.gs-contact-faq-item{border-radius:23px}.gs-contact-faq-item summary{font-size:14px;min-height:76px;padding:16px 18px;gap:14px;line-height:1.9}.gs-contact-faq-toggle{width:34px;height:34px;font-size:23px}.gs-contact-faq-answer{font-size:14px;padding:0 18px 20px;line-height:2}.gs-contact-faq-answer p{margin-top:3px}}
+@media(prefers-reduced-motion:reduce){.gs-contact *{transition:none!important;scroll-behavior:auto!important}}

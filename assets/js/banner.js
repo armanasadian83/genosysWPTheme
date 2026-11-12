@@ -3,6 +3,13 @@
   if (!banner) return;
   const slides = [...banner.querySelectorAll('.hero-slide')];
   const dots = [...banner.querySelectorAll('.banner-dot')];
+  // A single configured photograph remains a link/image without rotation or dragging.
+  if (slides.length < 2) {
+    const controls = banner.querySelector('.banner-controls');
+    if (controls) controls.hidden = true;
+    banner.classList.add('is-ready');
+    return;
+  }
   const playback = banner.querySelector('.banner-playback');
   const status = banner.querySelector('.banner-status');
   const menu = document.querySelector('.menu-toggle');

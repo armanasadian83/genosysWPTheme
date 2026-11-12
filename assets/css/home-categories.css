@@ -123,10 +123,25 @@
     scroll-snap-type: none;
 }
 
-.genosys-categories__row.latest-products__row.is-auto-scrolling {
+.genosys-categories__row.latest-products__row.is-loop-ready {
     scroll-snap-type: none;
     scroll-behavior: auto;
     overflow-anchor: none;
+}
+
+.genosys-categories__track {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: flex-end;
+    width: max-content;
+    min-width: 100%;
+    height: 100%;
+    gap: inherit;
+    direction: rtl;
+}
+
+.genosys-categories__row.is-auto-scrolling .genosys-categories__track {
+    will-change: transform;
 }
 
 .genosys-categories__card {

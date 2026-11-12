@@ -1,0 +1,34 @@
+/* Phone verification is scoped to My Orders; existing order cards stay unchanged. */
+.gorders .gorders-access { margin: 0 0 28px; border: 1px solid #eae9e9; border-radius: 30px; background: #fff; box-shadow: 0 0 0 5px #f5f5f580, 0 9px 28px #17192108; overflow: hidden; }
+.gorders-access > summary { display: flex; align-items: center; gap: 14px; min-height: 80px; padding: 18px 24px; font-size: 18px; font-weight: 700; cursor: pointer; list-style: none; }
+.gorders-access > summary::-webkit-details-marker { display: none; }
+.gorders-access > summary > svg { width: 20px; height: 20px; margin-inline-start: auto; color: var(--gorders-crimson); transition: transform 180ms ease; }
+.gorders-access[open] > summary > svg { transform: rotate(180deg); }
+.gorders-access__icon { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; border-radius: 50%; color: var(--gorders-crimson); background: #fbeef1; }
+.gorders-access__icon svg { width: 23px; height: 23px; }
+.gorders-access__body { padding: 0 24px 24px; }
+.gorders-access__body > p { margin: 0 0 18px; color: var(--gorders-muted); font-size: 14px; }
+.gorders-access__form { display: grid; grid-template-columns: minmax(180px, 380px) auto; align-items: end; gap: 14px; width: fit-content; max-width: 100%; margin: 0; }
+.gorders-access__form [hidden] { display: none !important; }
+.gorders-access__form label { display: block; margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+.gorders-access__form input { width: 100%; height: 54px; border: 1px solid var(--gorders-line); border-radius: 18px; padding: 10px 18px; background: #fff; color: var(--gorders-ink); font-size: 17px; text-align: left; }
+.gorders-access__form input::placeholder { color: #aaa5a3; }
+.gorders-access__form input:focus { border-color: var(--gorders-crimson); outline: 2px solid #cc073318; outline-offset: 2px; }
+.gorders-access__form input[aria-invalid="true"] { border-color: var(--gorders-crimson); }
+.gorders-access__submit { min-width: 164px; min-height: 54px; border: 0; border-radius: 999px; padding: 10px 24px; background: linear-gradient(135deg, #d50b3b, #a50828); color: #fff; font-size: 15px; font-weight: 700; box-shadow: 0 10px 20px -12px #bb123f88; }
+.gorders-access__submit:disabled { cursor: wait; opacity: .65; }
+.gorders-access__form small { display: block; margin-top: 7px; color: var(--gorders-muted); font-size: 13px; }
+.gorders-access__actions { display: flex; flex-wrap: wrap; gap: 18px; grid-column: 1 / -1; }
+.gorders-access__actions button, .gorders-access__clear { padding: 3px 0; border: 0; background: transparent; color: var(--gorders-crimson); font-size: 13px; font-weight: 600; }
+.gorders-access__actions button:disabled { color: var(--gorders-muted); cursor: default; }
+.gorders-access__message { grid-column: 1 / -1; margin: 0; color: var(--gorders-crimson); font-size: 14px; }
+.gorders-access__message.is-success { color: #207d3e; }
+.gorders-access__clear { margin-top: 18px; }
+@media (max-width: 600px) {
+    .gorders .gorders-access { border-radius: 24px; }
+    .gorders-access > summary { gap: 10px; padding: 15px 18px; font-size: 16px; }
+    .gorders-access__body { padding: 0 18px 20px; }
+    .gorders-access__form { width: 100%; grid-template-columns: minmax(0, 1fr); }
+    .gorders-access__submit { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .gorders-access > summary > svg { transition: none; } }

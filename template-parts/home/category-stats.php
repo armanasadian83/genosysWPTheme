@@ -2,12 +2,13 @@
 /** Animated homepage statistics beneath the category cards. */
 defined( 'ABSPATH' ) || exit;
 
-$genosys_stats = array(
-	array( 'count' => 16, 'display' => '۱۶', 'label' => 'سال سابقه', 'icon' => 'calendar' ),
-	array( 'count' => 2000, 'display' => '۲۰۰۰', 'label' => 'مشتری ثابت', 'icon' => 'people' ),
-	array( 'count' => 50, 'display' => '۵۰', 'label' => 'محصول تخصصی', 'icon' => 'flask' ),
-	array( 'count' => 50, 'display' => '۵۰', 'label' => 'کشور جهان', 'icon' => 'globe' ),
-);
+if ( ! genosys_site_setting( 'stats_visible', 1 ) ) { return; }
+$genosys_stats = genosys_site_setting( 'stats' );
+foreach ( $genosys_stats as &$stat ) {
+    $stat['count'] = max( 0, min( 1000000, (int) ( $stat['count'] ?? 0 ) ) );
+    $stat['display'] = genosys_persian_number( $stat['count'] );
+}
+unset( $stat );
 ?>
 <div class="genosys-category-stats" role="list" aria-label="آمار ژنوسیس">
 	<?php foreach ( $genosys_stats as $stat ) : ?>

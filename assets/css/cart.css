@@ -1,0 +1,906 @@
+/* The WooCommerce cart has its own layout and leaves all other pages untouched. */
+.genosys-cart-page {
+    direction: rtl;
+    color: #1d1d24;
+    background: #fff;
+}
+
+.genosys-cart-page *,
+.genosys-cart-page *::before,
+.genosys-cart-page *::after {
+    box-sizing: border-box;
+}
+
+.genosys-cart-page .genosys-cart-container {
+    width: min(100%, 1512px);
+    margin-inline: auto;
+    padding: 22px clamp(20px, 4.5vw, 48px) 90px;
+}
+
+.genosys-cart-page .genosys-cart-breadcrumb {
+    margin: 0 0 26px;
+    color: #8d8582;
+    font-size: 14px;
+    text-align: right;
+}
+
+.genosys-cart-page .genosys-cart-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-breadcrumb a:hover {
+    color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin: 0 0 39px;
+    color: #1d1d24;
+    font-size: clamp(36px, 3.3vw, 52px);
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.genosys-cart-page .genosys-cart-heading h1 {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.genosys-cart-page .genosys-cart-count {
+    color: #9c837b;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.genosys-cart-page .woocommerce-message,
+.genosys-cart-page .woocommerce-info,
+.genosys-cart-page .woocommerce-error {
+    position: relative;
+    margin: 0 0 25px;
+    padding: 18px 68px 18px 24px;
+    border: 1px solid #f1d5dc;
+    border-radius: 20px;
+    background: linear-gradient(115deg, #fff 16%, #fff6f8 100%);
+    box-shadow: 0 10px 26px rgba(145, 28, 56, .06);
+    color: #26242a;
+    font-size: 16px;
+    line-height: 1.8;
+    list-style: none;
+    text-align: right;
+}
+
+.genosys-cart-page .woocommerce-error {
+    border-color: #ecc6d0;
+    background: linear-gradient(115deg, #fff 16%, #fff0f3 100%);
+}
+
+.genosys-cart-page .woocommerce-message::before,
+.genosys-cart-page .woocommerce-info::before,
+.genosys-cart-page .woocommerce-error::before {
+    content: "✓";
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    left: auto;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #c8103b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.genosys-cart-page .woocommerce-info::before {
+    content: "i";
+    font-size: 18px;
+}
+
+.genosys-cart-page .woocommerce-error::before {
+    content: "!";
+    background: #a80c32;
+    font-size: 19px;
+}
+
+.genosys-cart-page .woocommerce-error li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.genosys-cart-page .woocommerce-error li + li {
+    margin-block-start: 6px;
+}
+
+.genosys-cart-page .woocommerce-message a,
+.genosys-cart-page .woocommerce-info a,
+.genosys-cart-page .woocommerce-error a {
+    color: #bd0a32;
+    font-weight: 700;
+    text-decoration-color: rgba(189, 10, 50, .4);
+    text-underline-offset: 4px;
+}
+
+.genosys-cart-page .woocommerce-message a:hover,
+.genosys-cart-page .woocommerce-info a:hover,
+.genosys-cart-page .woocommerce-error a:hover {
+    color: #9f072c;
+    text-decoration-color: currentColor;
+}
+
+.genosys-cart-page .woocommerce-message a:focus-visible,
+.genosys-cart-page .woocommerce-info a:focus-visible,
+.genosys-cart-page .woocommerce-error a:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid #c8103b;
+    outline-offset: 3px;
+}
+
+.genosys-cart-page .woocommerce-message a.restore-item,
+.genosys-cart-page .woocommerce-message a.button,
+.genosys-cart-page .woocommerce-info a.button,
+.genosys-cart-page .woocommerce-error a.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    float: none;
+    min-height: 34px;
+    margin: 2px 8px 2px 0;
+    padding: 3px 14px;
+    border: 1px solid #eebac8;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: none;
+    color: #bd0a32;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.genosys-cart-page .woocommerce-message a.restore-item:hover,
+.genosys-cart-page .woocommerce-message a.button:hover,
+.genosys-cart-page .woocommerce-info a.button:hover,
+.genosys-cart-page .woocommerce-error a.button:hover {
+    border-color: #c8103b;
+    background: #c8103b;
+    color: #fff;
+}
+
+.genosys-cart-page .genosys-cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(330px, 1fr);
+    align-items: start;
+    gap: 34px;
+}
+
+.genosys-cart-page .genosys-cart-items {
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    min-width: 0;
+}
+
+.genosys-cart-page .genosys-cart-items__form {
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+    margin: 0;
+}
+
+.genosys-cart-page .genosys-cart-item {
+    display: grid;
+    grid-template-columns: 138px minmax(0, 1fr) 130px;
+    align-items: center;
+    gap: 24px;
+    min-height: 188px;
+    padding: 21px 23px;
+    border: 1px solid #eeeeef;
+    border-radius: 34px;
+    background: #fff;
+    box-shadow: 0 0 0 5px #f7f7f7, 0 10px 25px rgba(30, 32, 36, .05);
+    transition: box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.genosys-cart-page .genosys-cart-item:hover,
+.genosys-cart-page .genosys-cart-item:focus-within {
+    border-color: #f4d6dc;
+    box-shadow: 0 0 0 5px #f9edf0, 0 12px 26px rgba(157, 33, 65, .09);
+}
+
+.genosys-cart-page .genosys-cart-item__thumb {
+    display: grid;
+    place-items: center;
+    width: 138px;
+    height: 138px;
+    overflow: hidden;
+    border-radius: 25px;
+    background: linear-gradient(150deg, #f9f9f9, #e3e1df);
+}
+
+.genosys-cart-page .genosys-cart-item__thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.genosys-cart-page .genosys-cart-item__thumb a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.genosys-cart-page .genosys-cart-item__details {
+    min-width: 0;
+    text-align: right;
+}
+
+.genosys-cart-page .genosys-cart-item__category {
+    display: block;
+    margin-bottom: 5px;
+    color: #8b8582;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.genosys-cart-page .genosys-cart-item__title {
+    display: block;
+    margin: 0 0 12px;
+    color: #1d1d24;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.65;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-item__title:hover {
+    color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-item__title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-item__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    color: #cd0935;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.genosys-cart-page .genosys-cart-item__old-price {
+    color: #9e9b9a;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.genosys-cart-page .genosys-cart-item__discount {
+    display: inline-block;
+    padding: 2px 11px;
+    border-radius: 999px;
+    background: #c60836;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.genosys-cart-page .genosys-cart-item__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    align-self: stretch;
+    min-width: 0;
+}
+
+.genosys-cart-page .genosys-cart-item__subtotal {
+    color: #cb0731;
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.7;
+    white-space: nowrap;
+}
+
+.genosys-cart-page .genosys-cart-item__subtotal .woocommerce-Price-currencySymbol {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity,
+.genosys-cart-page .genosys-cart-item__quantity .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 52px;
+    border: 1px solid #e3e3e5;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity {
+    direction: ltr;
+    overflow: hidden;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity .quantity {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+}
+
+.genosys-cart-page .genosys-cart-item__step {
+    position: relative;
+    flex: 0 0 34px;
+    align-self: stretch;
+    width: 34px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #ed4359;
+    font-size: 0;
+    line-height: 1;
+    appearance: none;
+    cursor: pointer;
+}
+
+.genosys-cart-page .genosys-cart-item__step::before,
+.genosys-cart-page .genosys-cart-item__step--plus::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+}
+
+.genosys-cart-page .genosys-cart-item__step::before {
+    width: 18px;
+    height: 1px;
+}
+
+.genosys-cart-page .genosys-cart-item__step--plus::after {
+    width: 1px;
+    height: 18px;
+}
+
+.genosys-cart-page .genosys-cart-item__step:hover {
+    background: #fff1f4;
+    color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-item__step:focus-visible {
+    outline: 2px solid #c8103b;
+    outline-offset: -4px;
+}
+
+.genosys-cart-page .genosys-cart-item__step:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity input.qty {
+    width: 100%;
+    height: 100%;
+    padding: 0 8px;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    color: #11131b;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity input.qty::-webkit-inner-spin-button,
+.genosys-cart-page .genosys-cart-item__quantity input.qty::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.genosys-cart-page .genosys-cart-item__quantity:focus-within {
+    border-color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-item__remove {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #89817b;
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-item__remove:hover {
+    color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-item__remove svg {
+    width: 16px;
+    height: 16px;
+}
+
+.genosys-cart-page .genosys-cart-summary {
+    position: sticky;
+    top: 24px;
+    min-width: 0;
+    padding: 30px 32px 32px;
+    border: 1px solid #f3c0ca;
+    border-radius: 34px;
+    background: radial-gradient(ellipse 95% 58% at 0% 100%, rgba(212, 27, 51, .29), transparent 88%), linear-gradient(160deg, #fff 27%, #fffafb 65%, #fbe9ed 100%);
+    box-shadow: 0 18px 30px rgba(141, 28, 48, .08);
+}
+
+.genosys-cart-page .genosys-cart-summary__title {
+    margin: 0 0 26px;
+    color: #1d1d24;
+    font-size: 25px;
+    font-weight: 750;
+    line-height: 1.5;
+}
+
+.genosys-cart-page .genosys-cart-summary__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    color: #8a8583;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.genosys-cart-page .genosys-cart-summary__row > :last-child {
+    color: #1d1d24;
+    white-space: nowrap;
+}
+
+.genosys-cart-page .genosys-cart-summary__row--discount > :last-child {
+    color: #cf0734;
+    font-weight: 700;
+}
+
+.genosys-cart-page .genosys-cart-summary__coupon {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    margin: 26px 0 38px;
+}
+
+.genosys-cart-page .genosys-cart-summary__coupon input {
+    flex: 1;
+    min-width: 0;
+    height: 58px;
+    padding: 0 20px;
+    border: 1px solid #e4e3e3;
+    border-radius: 999px;
+    background: #fff;
+    color: #1d1d24;
+    font: inherit;
+    font-size: 15px;
+    text-align: right;
+}
+
+.genosys-cart-page .genosys-cart-summary__coupon input:focus {
+    border-color: #c8103b;
+    outline: none;
+}
+
+.genosys-cart-page .genosys-cart-summary__coupon button {
+    flex: 0 0 auto;
+    min-width: 90px;
+    height: 58px;
+    padding: 0 22px;
+    border: 1px solid #d20b39;
+    border-radius: 999px;
+    background: #fff;
+    color: #cb0731;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.genosys-cart-page .genosys-cart-summary__coupon button:hover {
+    background: #c8103b;
+    color: #fff;
+}
+
+.genosys-cart-page .genosys-cart-summary__applied-coupon {
+    margin: -24px 0 28px;
+    color: #8a8583;
+    font-size: 13px;
+}
+
+.genosys-cart-page .genosys-cart-summary__applied-coupon a {
+    margin-inline-start: 8px;
+    color: #c8103b;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-summary__total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 28px 0 26px;
+    border-top: 1px solid rgba(115, 99, 104, .19);
+    color: #1d1d24;
+    font-size: 19px;
+    font-weight: 650;
+}
+
+.genosys-cart-page .genosys-cart-summary__total strong {
+    color: #c8103b;
+    font-size: clamp(25px, 2vw, 32px);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.genosys-cart-page .genosys-cart-summary__total small {
+    color: #1d1d24;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.genosys-cart-page .genosys-cart-summary__total .woocommerce-Price-currencySymbol {
+    color: #1d1d24;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.genosys-cart-page .genosys-cart-summary__checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 65px;
+    padding: 14px 26px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(105deg, #ce0734, #a7062b);
+    box-shadow: 0 12px 19px rgba(188, 6, 48, .25);
+    color: #fff;
+    font: inherit;
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.genosys-cart-page .genosys-cart-summary__checkout:hover {
+    color: #fff;
+    background: linear-gradient(105deg, #db0d3d, #b50831);
+    box-shadow: 0 15px 23px rgba(188, 6, 48, .32);
+}
+
+.genosys-cart-page .genosys-cart-summary__trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px 10px;
+    margin-top: 22px;
+    color: #8d8483;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.genosys-cart-page .genosys-cart-continue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-self: start;
+    margin-top: 4px;
+    color: #8d847f;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-continue:hover {
+    color: #c8103b;
+}
+
+.genosys-cart-page .genosys-cart-empty {
+    padding: 60px 28px;
+    border: 1px solid #f2d4d9;
+    border-radius: 34px;
+    background: #fffafb;
+    text-align: center;
+}
+
+.genosys-cart-page .genosys-cart-empty h2 {
+    margin: 0 0 12px;
+    font-size: 27px;
+}
+
+.genosys-cart-page .genosys-cart-empty p {
+    margin: 0 0 26px;
+    font-size: 20px;
+}
+
+.genosys-cart-page .genosys-cart-empty a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 10px 28px;
+    border-radius: 999px;
+    background: #c8103b;
+    color: #fff;
+    text-decoration: none;
+}
+
+.genosys-cart-page .genosys-cart-update {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.genosys-cart-page .genosys-cart-update:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 7px 14px;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    border: 1px solid #c8103b;
+    border-radius: 999px;
+    background: #fff;
+    color: #c8103b;
+}
+
+@media (max-width: 1180px) {
+    .genosys-cart-page .genosys-cart-layout {
+        grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+        gap: 25px;
+    }
+
+    .genosys-cart-page .genosys-cart-item {
+        grid-template-columns: 116px minmax(0, 1fr) 116px;
+        gap: 17px;
+        padding-inline: 19px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__thumb {
+        width: 116px;
+        height: 116px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__quantity,
+    .genosys-cart-page .genosys-cart-item__quantity .quantity {
+        width: 116px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary {
+        padding-inline: 25px;
+    }
+}
+
+@media (max-width: 960px) {
+    .genosys-cart-page .genosys-cart-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .genosys-cart-page .genosys-cart-summary {
+        position: static;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .genosys-cart-page .genosys-cart-container {
+        padding: 20px 18px 65px;
+    }
+
+    .genosys-cart-page .woocommerce-message,
+    .genosys-cart-page .woocommerce-info,
+    .genosys-cart-page .woocommerce-error {
+        padding: 15px 57px 15px 16px;
+        border-radius: 17px;
+        font-size: 14px;
+    }
+
+    .genosys-cart-page .woocommerce-message::before,
+    .genosys-cart-page .woocommerce-info::before,
+    .genosys-cart-page .woocommerce-error::before {
+        top: 16px;
+        right: 16px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .genosys-cart-page .genosys-cart-heading {
+        gap: 11px;
+        margin-bottom: 28px;
+        font-size: 35px;
+    }
+
+    .genosys-cart-page .genosys-cart-count {
+        font-size: 13px;
+    }
+
+    .genosys-cart-page .genosys-cart-item {
+        grid-template-columns: 98px minmax(0, 1fr);
+        gap: 12px 15px;
+        min-height: 0;
+        padding: 15px;
+        border-radius: 25px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__thumb {
+        width: 98px;
+        height: 98px;
+        border-radius: 17px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__details {
+        align-self: start;
+    }
+
+    .genosys-cart-page .genosys-cart-item__category {
+        font-size: 12px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__title {
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__price {
+        font-size: 13px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__old-price {
+        font-size: 12px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__discount {
+        font-size: 10px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__actions {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 12px;
+        border-top: 1px solid #f1eeee;
+    }
+
+    .genosys-cart-page .genosys-cart-item__subtotal {
+        font-size: 14px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__quantity,
+    .genosys-cart-page .genosys-cart-item__quantity .quantity {
+        width: 88px;
+        height: 42px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__quantity input.qty {
+        font-size: 17px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__step {
+        flex-basis: 26px;
+        width: 26px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__step::before {
+        width: 15px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__step--plus::after {
+        height: 15px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary {
+        padding: 25px 22px;
+        border-radius: 25px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__title {
+        font-size: 22px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__row {
+        font-size: 14px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__row > :last-child {
+        max-width: 58%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__total {
+        flex-wrap: wrap;
+        font-size: 16px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__total strong {
+        font-size: 24px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__checkout {
+        min-height: 58px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 390px) {
+    .genosys-cart-page .genosys-cart-item {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__thumb {
+        width: 82px;
+        height: 82px;
+    }
+
+    .genosys-cart-page .genosys-cart-item__remove {
+        font-size: 12px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__coupon input,
+    .genosys-cart-page .genosys-cart-summary__coupon button {
+        height: 50px;
+    }
+
+    .genosys-cart-page .genosys-cart-summary__coupon button {
+        min-width: 70px;
+        padding-inline: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .genosys-cart-page .genosys-cart-item {
+        transition: none;
+    }
+}
